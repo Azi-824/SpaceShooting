@@ -9,7 +9,12 @@
 //コンストラクタ
 End::End()
 {
-	
+
+	if (!back->Load(IMG_DIR_BACK, IMG_NAME_RANKING)) { IsLoad = false; }	//背景画像読み込み
+	if (!bgm->Load(MUSIC_DIR_BGM, BGM_NAME_RANKING)) { IsLoad = false; }	//BGM読み込み
+
+	IsLoad = true;	//読み込み成功
+
 }
 
 //デストラクタ
@@ -23,18 +28,6 @@ void End::SetInit()
 {
 	back->SetInit();	//背景画像初期設定
 	bgm->SetInit(DX_PLAYTYPE_LOOP, 30);		//BGM初期設定
-}
-
-
-//データ読込
-bool End::DataLoad()
-{
-	//画像関係
-	if (!back->Load(IMG_DIR_BACK, IMG_NAME_RANKING)) { return false; }	//背景画像読み込み
-
-	if (!bgm->Load(MUSIC_DIR_BGM, BGM_NAME_RANKING)) { return false; }	//BGM読み込み
-
-	return true;
 }
 
 //エンド画面の処理

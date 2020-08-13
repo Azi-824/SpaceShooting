@@ -5,15 +5,16 @@
 
 //############## クラス定義 ################
 
-int Scene::NowScene = 0;	//現在のシーン
-bool Scene::IsGameStart = false;			//ゲームスタートできるか
-bool Scene::GameEnd = false;//ゲームエンドフラグ
+int Scene::NowScene = 0;			//現在のシーン
+bool Scene::IsGameStart = false;	//ゲームスタートできるか
+bool Scene::GameEnd = false;		//ゲームエンドフラグ
 
 //コンストラクタ
 Scene::Scene()
 {
 	back = new Image();	//インスタンス生成
 	bgm = new Music();	//インスタンス生成
+	IsLoad = false;		//読み込めていない
 }
 
 //デストラクタ

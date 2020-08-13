@@ -10,6 +10,11 @@
 Play::Play()
 {
 
+	if (!back->Load(IMG_DIR_BACK, IMG_NAME_PLAY)) { IsLoad = false; }	//背景画像読み込み
+	if (!bgm->Load(MUSIC_DIR_BGM, BGM_NAME_PLAY)) { IsLoad = false; }	//BGM読み込み
+
+	IsLoad = true;	//読み込み成功
+
 }
 
 //デストラクタ
@@ -23,19 +28,6 @@ void Play::SetInit()
 {
 	back->SetInit();	//画像初期設定
 	bgm->SetInit(DX_PLAYTYPE_LOOP, 30);		//BGM初期設定
-}
-
-//データ読込
-bool Play::DataLoad()
-{
-
-	//画像関係
-	if (!back->Load(IMG_DIR_BACK, IMG_NAME_PLAY)) { return false; }	//背景画像読み込み
-
-	//BGM
-	if (!bgm->Load(MUSIC_DIR_BGM, BGM_NAME_PLAY)) { return false; }	//BGM読み込み
-
-	return true;
 }
 
 //プレイ画面の処理

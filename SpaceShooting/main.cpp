@@ -35,12 +35,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	AddScene();	//シーンを追加
 
-	//ゲームデータの読み込み開始
-	for (auto s : scene)
-	{
-		if (!s->DataLoad()) { return -1; }	//読み込み失敗
-	}
-
 	//ゲームのメインループ
 	while (GameLoop())
 	{

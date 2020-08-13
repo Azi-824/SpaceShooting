@@ -21,13 +21,6 @@ void Load::SetInit()
 
 }
 
-
-//ƒf[ƒ^“Ç
-bool Load::DataLoad()
-{
-	return true;
-}
-
 //“Ç‚İ‚İ‰æ–Ê‚Ìˆ—
 void Load::PlayScene()
 {

@@ -19,7 +19,6 @@ public:
 	~End();			//デストラクタ
 
 	void SetInit() override;	//初期設定
-	bool DataLoad() override;	//データ読込
 	void PlayScene() override;	//エンド画面の処理
 
 };

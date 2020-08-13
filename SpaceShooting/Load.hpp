@@ -19,7 +19,6 @@ public:
 	~Load();	//デストラクタ
 
 	void SetInit() override;	//初期設定
-	bool DataLoad() override;	//データ読込
 	void PlayScene() override;	//ロード画面の処理
 
 };

@@ -43,6 +43,7 @@ protected:
 	static bool IsGameStart;	//ゲームスタートできるか
 	Image* back;				//背景画像
 	Music* bgm;					//BGM
+	bool IsLoad;				//読み込めたか
 
 public:
 
@@ -53,7 +54,6 @@ public:
 	static bool IsGameEnd();	//ゲームエンドフラグを取得
 
 	virtual void SetInit() = 0;		//初期設定
-	virtual bool DataLoad() = 0;	//シーンごとの読み込み
 	virtual void PlayScene() = 0;	//シーン毎の処理
 
 };

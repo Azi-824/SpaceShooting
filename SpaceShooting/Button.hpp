@@ -28,24 +28,22 @@ enum BT_TYPE
 	BT_END			//エンド
 };
 
+using std::string;
 //################# クラス定義 ################
 class Button
 {
 private:
 
+	string text;//文字
 	Image* img;	//画像
 	RECT rect;	//領域
 	static Music* se;	//効果音
 
-	int Element;			//要素番号
-	static int ElementCnt;	//要素数
-
-	bool HoverMouse();		//マウスが領域内にあるか
-
 public:
 
-	Button(Image*);	//コンストラクタ
-	~Button();		//デストラクタ
+	Button(const char*);//コンストラクタ
+	Button(Image*);		//コンストラクタ
+	~Button();			//デストラクタ
 
 	void SetInit(int,int);	//初期設定
 
@@ -53,7 +51,6 @@ public:
 
 	bool OnClick();	//クリックされたか
 	void Draw();	//描画
-	int GetElement();	//要素番号取得
 	
 	template <typename F>
 	void Event(F func)	//クリックされた時のイベント

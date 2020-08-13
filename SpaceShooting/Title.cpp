@@ -66,6 +66,8 @@ void Title::PlayScene()
 //ボタン毎の処理
 void Title::ButtonFunc()
 {
+
+	int cnt = 0;	//カウント用
 	for (auto b : button)
 	{
 		b->UpDate();//更新
@@ -73,7 +75,7 @@ void Title::ButtonFunc()
 		if (b->OnClick())	//ボタンをクリックされたら
 		{
 			//ボタン毎の処理を設定
-			switch (b->GetElement())	//要素番号ごと
+			switch (cnt)	//要素番号ごと
 			{
 
 			case BT_START: //start
@@ -101,6 +103,7 @@ void Title::ButtonFunc()
 				break;
 			}
 		}
+		++cnt;	//カウントアップ
 	}
 
 }

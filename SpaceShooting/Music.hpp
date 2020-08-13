@@ -15,8 +15,8 @@
 #define BGM_NAME_PLAY				R"(\play.mp3)"			//プレイのBGM
 #define BGM_NAME_RANKING			R"(\ranking.mp3)"		//ランキングのBGM
 
-////SE
-//#define SE_NAME_KETTEI				R"(\kettei.mp3)"		//決定の効果音
+//SE
+#define SE_NAME_KETTEI				R"(\kettei.mp3)"		//決定の効果音
 
 //##################### マクロ定義：エラーメッセージ ######################
 #define MUSIC_ERROR_TITLE "MUSIC_ERROR"					//エラータイトル

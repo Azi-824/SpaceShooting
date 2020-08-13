@@ -69,6 +69,8 @@ bool GameLoop()
 
 	fps->Update();		//FPSの処理[更新]
 
+	if (Scene::IsGameEnd()) { return false; }	//ゲーム終了
+
 	//▼▼▼▼▼ゲームのシーンここから▼▼▼▼▼
 
 	static bool IsInit = false;	//初期設定をしたか

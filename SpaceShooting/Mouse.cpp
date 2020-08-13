@@ -17,7 +17,7 @@ Mouse::~Mouse(){}
 
 //指定された位置が、指定された領域内か確認
 //戻り値: true 領域内: false 領域外
-bool Mouse::CheckClickOnRect(RECT rect)
+bool Mouse::HoverRect(RECT rect)
 {
 	int x = 0, y = 0;	//クリックされた座標
 	GetPos(&x, &y);		//位置取得
@@ -66,7 +66,7 @@ bool Mouse::OnLeftClick()
 //戻り値: true クリックされた: false クリックされていない
 bool Mouse::OnLeftClick(RECT rect)
 {
-	if (CheckClickOnRect(rect))	//領域内の時
+	if (HoverRect(rect))	//領域内の時
 	{
 		//クリックされた瞬間だけtrueを返す
 		return OnLeftClick();
@@ -89,7 +89,7 @@ bool Mouse::OnRightClick()
 //戻り値: true クリックされた: false クリックされていない
 bool Mouse::OnRightClick(RECT rect)
 {
-	if (CheckClickOnRect(rect))	//領域内の時
+	if (HoverRect(rect))	//領域内の時
 	{
 		//クリックされた瞬間だけtrueを返す
 		return OnRightClick();
@@ -99,4 +99,3 @@ bool Mouse::OnRightClick(RECT rect)
 		return false;
 	}
 }
-

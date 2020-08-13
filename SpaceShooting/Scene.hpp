@@ -12,7 +12,7 @@
 //################### マクロ定義 #########################
 //テキスト関係
 #define LOAD_TEXT	"NowLoading…"		//ロード画面のテキスト
-#define PUSH_TEXT	"PushEnter"			//エンターキーを押す、のテキスト
+#define PUSH_TEXT	"Click"				//クリックのテキスト
 #define TITLE_TEXT	"NowTitle"			//タイトル画面のテキスト
 #define PLAY_TEXT	"NowPlay"			//プレイ画面のテキスト
 #define END_TEXT	"NowEnd"			//エンド画面のテキスト
@@ -30,12 +30,15 @@ enum GAME_SCENE
 	SCENE_END			//エンドシーン
 };
 
+using std::vector;
+
 //################### クラス定義 #########################
 class Scene
 {
 protected:
 
 	static int NowScene;		//現在のシーン
+	static bool GameEnd;		//ゲーム終了フラグ
 	static Mouse* mouse;		//マウス
 	static bool IsGameStart;	//ゲームスタートできるか
 	Image* back;				//背景画像
@@ -47,6 +50,7 @@ public:
 	~Scene();		//デストラクタ
 
 	static int GetNowScene();	//現在のシーンを取得
+	static bool IsGameEnd();	//ゲームエンドフラグを取得
 
 	virtual void SetInit() = 0;		//初期設定
 	virtual bool DataLoad() = 0;	//シーンごとの読み込み

@@ -7,6 +7,7 @@
 
 int Scene::NowScene = 0;	//現在のシーン
 bool Scene::IsGameStart = false;			//ゲームスタートできるか
+bool Scene::GameEnd = false;//ゲームエンドフラグ
 
 //コンストラクタ
 Scene::Scene()
@@ -26,4 +27,10 @@ Scene::~Scene()
 int Scene::GetNowScene()
 {
 	return NowScene;
+}
+
+//ゲームエンドフラグを取得
+bool Scene::IsGameEnd()
+{
+	return GameEnd;
 }

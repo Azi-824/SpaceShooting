@@ -5,6 +5,7 @@
 
 //############### ヘッダファイル読み込み ##############
 #include "Scene.hpp"
+#include "Player.hpp"
 
 //############### マクロ定義 #################
 
@@ -12,6 +13,9 @@
 class Play : public Scene	//Sceneクラスを継承
 {
 private:
+
+	vector<Image*> chara_img;	//キャラの画像
+	vector<Charactor*> chara;	//キャラ
 
 public:
 

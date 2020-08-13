@@ -19,3 +19,9 @@ Charactor::~Charactor()
 {
 	delete img;	//img”jŠü
 }
+
+//•`‰æ
+void Charactor::Draw()
+{
+	img->Draw(collision.left, collision.top);	//•`‰æ
+}

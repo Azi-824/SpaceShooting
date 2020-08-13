@@ -8,6 +8,15 @@
 #include "Image.hpp"
 
 //##################### マクロ定義 ##################
+#define CHAR_IMG_DIR	R"(.\Image\Charactor)"		//キャラの画像ファイルのディレクトリ
+
+#define PLAYER_IMG_NAME	R"(\player.png)"			//プレイヤーの画像ファイルの名前
+
+//##################### 列挙型 ##################
+enum CHARA_KIND
+{
+	CHARA_KIND_PLAYER	//プレイヤー
+};
 
 //##################### クラス定義 ##################
 class Charactor
@@ -25,7 +34,7 @@ public:
 	Charactor();	//コンストラクタ
 	~Charactor();	//デストラクタ
 
-	virtual void Draw() = 0;	//描画
+	void Draw();	//描画
 	virtual void SetInit() = 0;	//初期設定
 
 };

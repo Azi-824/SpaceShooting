@@ -61,12 +61,6 @@ void Title::PlayScene()
 	//ボタン処理
 	ButtonFunc();
 
-	//if (Mouse::OnLeftClick())	//左クリックされたら
-	//{
-	//	bgm->Stop();			//BGMを止める
-	//	NowScene = SCENE_PLAY;	//プレイ画面へ
-	//}
-
 }
 
 //ボタン毎の処理

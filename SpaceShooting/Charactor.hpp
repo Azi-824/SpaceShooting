@@ -11,11 +11,13 @@
 #define CHAR_IMG_DIR	R"(.\Image\Charactor)"		//キャラの画像ファイルのディレクトリ
 
 #define PLAYER_IMG_NAME	R"(\player.png)"			//プレイヤーの画像ファイルの名前
+#define ENEMY1_IMG_NAME	R"(\enemy1.png)"			//敵キャラ1の画像ファイルの名前
 
 //##################### 列挙型 ##################
 enum CHARA_KIND
 {
-	CHARA_KIND_PLAYER	//プレイヤー
+	CHARA_KIND_PLAYER,	//プレイヤー
+	CHARA_KIND_ENEMY1	//敵1
 };
 
 //##################### クラス定義 ##################

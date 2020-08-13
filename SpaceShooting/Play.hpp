@@ -6,6 +6,7 @@
 //############### ヘッダファイル読み込み ##############
 #include "Scene.hpp"
 #include "Player.hpp"
+#include "Enemy.hpp"
 
 //############### マクロ定義 #################
 

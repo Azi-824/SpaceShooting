@@ -154,6 +154,7 @@
     <ClInclude Include="Button.hpp" />
     <ClInclude Include="Charactor.hpp" />
     <ClInclude Include="End.hpp" />
+    <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="Fps.hpp" />
     <ClInclude Include="Global.hpp" />
     <ClInclude Include="Image.hpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Charactor.cpp" />
     <ClCompile Include="End.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Fps.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Load.cpp" />

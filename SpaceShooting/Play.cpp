@@ -16,12 +16,15 @@ Play::Play()
 	//キャラ関係
 	//画像
 	chara_img.push_back(new Image(CHAR_IMG_DIR, PLAYER_IMG_NAME));	//プレイヤーの画像
+	chara_img.push_back(new Image(CHAR_IMG_DIR, ENEMY1_IMG_NAME));	//敵1の画像
+
 	for (auto c : chara_img)
 	{
 		if (!c->GetIsLoad()) { IsLoad = false; return; }	//読み込み失敗
 	}
 	//キャラ
 	chara.push_back(new Player(chara_img.at(CHARA_KIND_PLAYER)));	//プレイヤー
+	chara.push_back(new Enemy(chara_img.at(CHARA_KIND_ENEMY1)));	//敵1
 
 	IsLoad = true;	//読み込み成功
 

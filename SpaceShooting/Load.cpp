@@ -50,11 +50,11 @@ void Load::PlayScene()
 
 	if (IsGameStart)	//ゲームスタートできるなら
 	{
-		DrawString(TEST_TEXT_X, TEST_TEXT_Y, PUSH_TEXT, GetColor(255, 255, 255));	//プッシュ、のテキストを描画
+		DrawString(TEST_TEXT_X, TEST_TEXT_Y, PUSH_TEXT, COLOR_WHITE);	//プッシュ、のテキストを描画
 	}
 	else		//できないなら
 	{
-		DrawString(TEST_TEXT_X, TEST_TEXT_Y, LOAD_TEXT, GetColor(255, 255, 255));	//読み込み中のテキストを描画
+		DrawString(TEST_TEXT_X, TEST_TEXT_Y, LOAD_TEXT, COLOR_WHITE);	//読み込み中のテキストを描画
 	}
 
 

@@ -56,7 +56,7 @@ void Title::PlayScene()
 
 	back->Draw(GAME_LEFT, GAME_TOP);	//背景描画
 
-	DrawString(TEST_TEXT_X, TEST_TEXT_Y, TITLE_TEXT, GetColor(255, 255, 255));	//テスト用のテキストを描画
+	DrawString(TEST_TEXT_X, TEST_TEXT_Y, TITLE_TEXT, COLOR_WHITE);	//テスト用のテキストを描画
 
 	//ボタン処理
 	ButtonFunc();

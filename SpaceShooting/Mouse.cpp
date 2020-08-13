@@ -20,7 +20,7 @@ Mouse::~Mouse(){}
 bool Mouse::HoverRect(RECT rect)
 {
 	int x = 0, y = 0;	//クリックされた座標
-	GetPos(&x, &y);		//位置取得
+	bool f = GetPos(&x, &y);		//位置取得
 
 	//領域内か判定
 	//X座標判定

@@ -27,6 +27,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	SetWindowIconID(GAME_ICON_ID);								//アイコン変更
 
+	SetUseASyncLoadFlag(TRUE);									//同期読み込みに設定
+
 	SetAlwaysRunFlag(TRUE);										//非アクティブに設定
 
 	if (DxLib_Init() == -1) { return -1; }						//ＤＸライブラリ初期化処理
@@ -67,14 +69,19 @@ bool GameLoop()
 
 	//▼▼▼▼▼ゲームのシーンここから▼▼▼▼▼
 
-	static bool IsInit = false;	//初期設定をしたか
-	if (!IsInit)	//初期設定をしていなかったら
+	if (Scene::GetIsGameStart())	//ゲームスタートできるとき
 	{
-		for (auto s : scene)
+		static bool IsInit = false;	//初期設定をしたか
+		if (!IsInit)	//初期設定をしていなかったら
 		{
-			s->SetInit();	//初期設定
+			for (auto s : scene)
+			{
+				if (!s->GetIsLoad()) { return false; }	//読み込み失敗時
+				s->SetInit();	//初期設定
+			}
+			IsInit = true;		//初期設定終了
 		}
-		IsInit = true;		//初期設定終了
+
 	}
 
 	scene.at(Scene::GetNowScene())->PlayScene();	//各シーンの処理

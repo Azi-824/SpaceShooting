@@ -52,6 +52,8 @@ public:
 
 	static int GetNowScene();	//現在のシーンを取得
 	static bool IsGameEnd();	//ゲームエンドフラグを取得
+	static bool GetIsGameStart();//ゲームスタートできるか取得
+	bool GetIsLoad();			//読み込めたか取得
 
 	virtual void SetInit() = 0;		//初期設定
 	virtual void PlayScene() = 0;	//シーン毎の処理

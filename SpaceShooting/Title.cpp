@@ -9,15 +9,15 @@
 //コンストラクタ
 Title::Title()
 {
-	if (!back->Load(IMG_DIR_BACK, IMG_NAME_TITLE)) { IsLoad = false; }	//背景画像読み込み
-	if (!bgm->Load(MUSIC_DIR_BGM, BGM_NAME_TITLE)) { IsLoad = false; }	//BGM読み込み
+	if (!back->Load(IMG_DIR_BACK, IMG_NAME_TITLE)) { IsLoad = false; return; }	//背景画像読み込み
+	if (!bgm->Load(MUSIC_DIR_BGM, BGM_NAME_TITLE)) { IsLoad = false; return; }	//BGM読み込み
 
 	//ボタンの画像
 	bt_img.push_back(new Image(BT_IMG_DIR, BT_START_IMG_NAME));	//ボタン（スタート）追加
 	bt_img.push_back(new Image(BT_IMG_DIR, BT_END_IMG_NAME));	//ボタン（エンド）追加
 	for (auto i : bt_img)
 	{
-		if (!i->GetIsLoad()) { IsLoad = false; }	//読み込み失敗
+		if (!i->GetIsLoad()) { IsLoad = false; return; }	//読み込み失敗
 	}
 
 	//ボタン

@@ -10,8 +10,8 @@
 Play::Play()
 {
 
-	if (!back->Load(IMG_DIR_BACK, IMG_NAME_PLAY)) { IsLoad = false; }	//”wŒi‰æ‘œ“Ç‚İ‚İ
-	if (!bgm->Load(MUSIC_DIR_BGM, BGM_NAME_PLAY)) { IsLoad = false; }	//BGM“Ç‚İ‚İ
+	if (!back->Load(IMG_DIR_BACK, IMG_NAME_PLAY)) { IsLoad = false; return; }	//”wŒi‰æ‘œ“Ç‚İ‚İ
+	if (!bgm->Load(MUSIC_DIR_BGM, BGM_NAME_PLAY)) { IsLoad = false; return; }	//BGM“Ç‚İ‚İ
 
 	IsLoad = true;	//“Ç‚İ‚İ¬Œ÷
 

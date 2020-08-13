@@ -35,3 +35,15 @@ bool Scene::IsGameEnd()
 {
 	return GameEnd;
 }
+
+//ゲームスタートできるか取得
+bool Scene::GetIsGameStart()
+{
+	return IsGameStart;
+}
+
+//読み込めたか取得
+bool Scene::GetIsLoad()
+{
+	return IsLoad;
+}

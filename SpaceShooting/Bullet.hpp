@@ -23,11 +23,13 @@ private:
 public:
 
 	Bullet(Animation*);	//コンストラクタ
+	Bullet();			//コンストラクタ
 	~Bullet();			//デストラクタ
 
 	void SetInit(int,int);		//初期設定
 	void SetIsDraw(bool);		//描画するか設定
 
 	void Draw();				//描画
+	bool InScreen();			//画面内か
 
 };

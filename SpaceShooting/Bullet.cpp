@@ -18,6 +18,16 @@ Bullet::Bullet(Animation* anim)
 	IsDraw = false;			//最初は描画しない
 }
 
+//コンストラクタ
+Bullet::Bullet()
+{
+	//メンバー初期化
+	anim = new Animation(ANIM_BULLET, ANIM_BULLET_SPEED,true);		//弾のアニメーション
+	collision = { 0 };		//当たり判定
+	Speed = 0;				//速さ
+	IsDraw = false;			//最初は描画しない
+}
+
 //デストラクタ
 Bullet::~Bullet()
 {
@@ -52,4 +62,16 @@ void Bullet::Draw()
 		collision.top -= Speed;
 		collision.bottom -= Speed;
 	}
+}
+
+//画面内か
+bool Bullet::InScreen()
+{
+	if (collision.top < GAME_TOP ||
+		collision.left < GAME_LEFT ||
+		collision.right > GAME_WIDTH)
+		return false;
+	else
+		return true;
+
 }

@@ -37,6 +37,12 @@
 #define ANIM_EXPLOSION_SPEED		0.08
 #define ANIM_BULLET_SPEED			0.08
 
+//############## 列挙型 #################
+enum ANIM_LIST
+{
+	ANIM_BULLET	//弾
+};
+
 using std::vector;
 using std::string;
 
@@ -44,6 +50,8 @@ using std::string;
 class Animation
 {
 private:
+
+	static vector<vector<int>> AnimList;//アニメーション一覧
 
 	vector<int> Handle;					//ハンドル
 	vector<int>::iterator Handle_itr;	//ハンドルのイテレータ
@@ -63,7 +71,9 @@ private:
 
 public:
 
-	Animation(const char*, const char*, int, int, int, int, int, double, bool);		//コンストラクタ
+	static bool CreateList();		//リスト作成
+
+	Animation(int, double, bool);	//コンストラクタ
 	~Animation();																	//デストラクタ
 
 	void SetInit();			//初期設定

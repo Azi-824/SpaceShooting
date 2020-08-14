@@ -10,13 +10,17 @@
 Player::Player(Image* img)
 {
 	this->img = img;
-	b_anim = new Animation(ANIM_DIR, ANIM_NAME_BULLET, ANIM_BULLET_ALL_CNT, ANIM_BULLET_YOKO_CNT, ANIM_BULLET_TATE_CNT,
-		ANIM_BULLET_WIDTH, ANIM_BULLET_HEIGHT, ANIM_BULLET_SPEED, true);	//弾アニメーション
-	bullet = new Bullet(b_anim);	//弾生成
+	Animation::CreateList();
+	bullet.push_back(new Bullet());
 }
 
 //デストラクタ
-Player::~Player(){}
+Player::~Player()
+{
+	for (auto b : bullet) { delete b; }
+	vector<Bullet*> v;
+	bullet.swap(v);
+}
 
 //毎回行う処理
 void Player::UpDate()
@@ -24,6 +28,18 @@ void Player::UpDate()
 	if (Mouse::OnLeftClick())	//左クリックされたら
 	{
 		Shot();	//弾を撃つ
+		bullet.push_back(new Bullet());	//弾を生成
+		bullet.back()->SetInit(GAME_WIDTH / 2, collision.top);	//初期設定
+	}
+
+	//画面外に出た弾を削除
+	for (int i = 0; i < bullet.size(); ++i)
+	{
+		if (!bullet.at(i)->InScreen())
+		{
+			delete bullet.at(i);	//破棄
+			bullet.erase(bullet.begin() + i);
+		}
 	}
 	Draw();
 }
@@ -40,7 +56,7 @@ void Player::SetInit()
 	collision.right = collision.left + img->GetWidth();				//右下X
 	collision.bottom = collision.top + img->GetHeight();			//右下Y
 
-	bullet->SetInit(GAME_WIDTH / 2, collision.top);	//弾初期設定
+	for (auto b : bullet) { b->SetInit(GAME_WIDTH / 2, collision.top); }
 
 }
 
@@ -48,11 +64,11 @@ void Player::SetInit()
 void Player::Draw()
 {
 	img->Draw(collision.left, collision.top);	//描画(キャラ)
-	bullet->Draw();								//描画(弾)
+	for (auto b : bullet) { b->Draw(); }
 }
 
 //弾を撃つ
 void Player::Shot()
 {
-	bullet->SetIsDraw(true);	//弾の描画をオンに
+	bullet.back()->SetIsDraw(true);
 }

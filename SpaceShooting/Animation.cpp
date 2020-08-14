@@ -6,20 +6,25 @@
 
 //################ クラス定義 ##############
 
+vector<vector<int>> Animation::AnimList;	//読み込んだアニメーションリスト
+
 //コンストラクタ
 /*
-引　数：const char *：画像のディレクトリ
-引　数：const char *：画像の名前
-引　数：int：画像の総分割数
-引　数：int：画像の横向きの分割数
-引　数：int：画像の縦向きの分割数
-引　数：int：画像の分割された横の大きさ
-引　数：int：画像の分割された縦の大きさ
+引　数：int：アニメーションの種類
 引　数：double：次の画像に変更する速さ
 引　数：bool：アニメーションをループするかどうか
 */
-Animation::Animation(const char* dir, const char* name, int SplitNumALL, int SpritNumX, int SplitNumY, int SplitWidth, int SplitHeight, double changeSpeed, bool IsLoop)
+
+Animation::Animation(int number, double changeSpeed, bool IsLoop)
 {
+
+	//アニメーションを読み込んで、リストを作成
+	if (AnimList.empty())	//リスト未作成なら
+	{
+		IsLoad = CreateList();
+		if (!IsLoad) { return; }	//読み込み失敗
+	}
+
 	//メンバー変数初期化
 	IsLoad = false;			//読み込めたか？
 	IsDrawEnd = false;		//描画終了したか?
@@ -27,30 +32,7 @@ Animation::Animation(const char* dir, const char* name, int SplitNumALL, int Spr
 	Width = 0;				//横幅を初期化
 	Height = 0;				//高さを初期化
 
-	//画像を読み込み
-	string LoadfilePath;		//画像のファイルパスを作成
-	LoadfilePath += dir;
-	LoadfilePath += name;
-
-	Handle.resize(SplitNumALL);
-
-	//画像を分割して読み込み
-	LoadDivGraph(LoadfilePath.c_str(), SplitNumALL, SpritNumX, SplitNumY, SplitWidth, SplitHeight, &Handle.front());
-
-	if (Handle.front() == -1)	//画像が読み込めなかったとき
-	{
-		string ErrorMsg(ANIMATION_ERROR_MSG);		//エラーメッセージ作成
-		ErrorMsg += TEXT('\n');						//改行
-		ErrorMsg += LoadfilePath;					//画像のパス
-
-		MessageBox(
-			NULL,
-			ErrorMsg.c_str(),	//char * を返す
-			TEXT(ANIMATION_ERROR_TTILE),
-			MB_OK);
-
-		return;
-	}
+	Handle = AnimList.at(number);	//一覧から、指定された種類のアニメーションを取得
 
 	ChangeMaxCnt = (GAME_FPS_SPEED * changeSpeed);
 	ChangeCnt = 0;	//アニメーションするフレームのカウント
@@ -73,6 +55,40 @@ Animation::~Animation()
 	//vectorのメモリ解放を行う
 	vector<int> v;			//空のvectorを作成する
 	Handle.swap(v);			//空と中身を入れ替える
+
+}
+
+//リスト作成
+bool Animation::CreateList()
+{
+	vector<int> w;	//作業用
+	string Path;	//path
+
+	w.resize(ANIM_BULLET_ALL_CNT);
+	Path = ANIM_DIR;
+	Path += ANIM_NAME_BULLET;
+
+	//読み込み
+	LoadDivGraph(Path.c_str(), ANIM_BULLET_ALL_CNT, ANIM_BULLET_YOKO_CNT, ANIM_BULLET_TATE_CNT, ANIM_BULLET_WIDTH, ANIM_BULLET_HEIGHT, &w.front());
+
+	if (w.front() == -1)	//画像が読み込めなかったとき
+	{
+		string ErrorMsg(ANIMATION_ERROR_MSG);		//エラーメッセージ作成
+		ErrorMsg += TEXT('\n');						//改行
+		ErrorMsg += Path;							//画像のパス
+
+		MessageBox(
+			NULL,
+			ErrorMsg.c_str(),	//char * を返す
+			TEXT(ANIMATION_ERROR_TTILE),
+			MB_OK);
+
+		return false;//読み込み失敗
+	}
+
+	AnimList.push_back(w);	//ハンドルを保存
+
+	return true;	//読み込み成功
 
 }
 

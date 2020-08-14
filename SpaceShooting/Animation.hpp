@@ -10,7 +10,8 @@
 #define ANIM_DIR				R"(.\Anim)"			//アニメーションの画像ファイルの場所
 
 #define ANIM_NAME_EXPLOSION		R"(\explosion.png)"		//爆発アニメーションの画像の名前
-#define ANIM_NAME_BULLET		R"(\bullet.png)"		//弾アニメーションの画像の名前
+#define ANIM_NAME_P_BULLET		R"(\p_bullet.png)"		//弾アニメーション(味方)の画像の名前
+#define ANIM_NAME_E_BULLET		R"(\e_bullet.png)"		//弾アニメーション(敵)の画像の名前
 
 //###################### マクロ定義：エラーメッセージ ########################
 #define ANIMATION_ERROR_TTILE	"ANIMATION_ERROR"						//エラータイトル

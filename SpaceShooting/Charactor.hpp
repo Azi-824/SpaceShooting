@@ -6,6 +6,7 @@
 //##################### ヘッダファイル読み込み #####################
 #include "Global.hpp"
 #include "Image.hpp"
+#include "Bullet.hpp"
 
 //##################### マクロ定義 ##################
 #define CHAR_IMG_DIR	R"(.\Image\Charactor)"		//キャラの画像ファイルのディレクトリ
@@ -28,6 +29,8 @@ protected:
 
 	Image* img;		//画像
 	RECT collision;	//当たり判定
+	Animation* b_anim;	//弾のアニメーション
+	Bullet* bullet;	//弾
 
 	int Hp;			//HP
 

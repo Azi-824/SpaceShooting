@@ -5,7 +5,7 @@
 
 //############# ヘッダファイル読み込み ###########
 #include "Charactor.hpp"
-#include "Bullet.hpp"
+//#include "Bullet.hpp"
 
 //############# マクロ定義 ############
 
@@ -14,8 +14,8 @@ class Player : public Charactor	//Charactorを継承
 {
 private:
 
-	Animation* b_anim;	//弾のアニメーション
-	Bullet* bullet;		//弾
+	//Animation* b_anim;	//弾のアニメーション
+	//Bullet* bullet;		//弾
 
 public:
 

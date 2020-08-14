@@ -10,7 +10,7 @@
 Player::Player(Image* img)
 {
 	this->img = img;
-	b_anim = new Animation(ANIM_DIR, ANIM_NAME_BULLET, ANIM_BULLET_ALL_CNT, ANIM_BULLET_YOKO_CNT, ANIM_BULLET_TATE_CNT,
+	b_anim = new Animation(ANIM_DIR, ANIM_NAME_P_BULLET, ANIM_BULLET_ALL_CNT, ANIM_BULLET_YOKO_CNT, ANIM_BULLET_TATE_CNT,
 		ANIM_BULLET_WIDTH, ANIM_BULLET_HEIGHT, ANIM_BULLET_SPEED, true);	//弾アニメーション
 	bullet = new Bullet(b_anim);	//弾生成
 }

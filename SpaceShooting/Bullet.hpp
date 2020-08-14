@@ -1,0 +1,33 @@
+//Bullet.hpp
+//弾を管理するクラス
+
+#pragma once
+
+//################# ヘッダファイル読み込み #################
+#include "Global.hpp"
+#include "Animation.hpp"
+
+//################## マクロ定義 ####################
+#define BULLET_SPEED 5	//弾の速度
+
+//################## クラス定義 ####################
+class Bullet
+{
+private:
+
+	Animation* anim;		//弾のアニメーション
+	RECT collision;			//当たり判定
+	int Speed;				//速さ
+	bool IsDraw;			//描画しているか
+
+public:
+
+	Bullet(Animation*);	//コンストラクタ
+	~Bullet();			//デストラクタ
+
+	void SetInit(int,int);		//初期設定
+	void SetIsDraw(bool);		//描画するか設定
+
+	void Draw();				//描画
+
+};

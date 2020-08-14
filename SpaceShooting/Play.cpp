@@ -60,8 +60,9 @@ void Play::PlayScene()
 
 	if (Mouse::OnLeftClick())	//左クリックされたら
 	{
-		bgm->Stop();			//BGMを止める
-		NowScene = SCENE_END;	//エンド画面へ
+		//bgm->Stop();			//BGMを止める
+		//NowScene = SCENE_END;	//エンド画面へ
+		chara.at(CHARA_KIND_PLAYER)->Shot();	//プレイヤーが弾を撃つ
 	}
 
 }

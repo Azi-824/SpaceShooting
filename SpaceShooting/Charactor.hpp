@@ -36,7 +36,8 @@ public:
 	Charactor();	//コンストラクタ
 	~Charactor();	//デストラクタ
 
-	void Draw();	//描画
+	virtual void Draw();	//描画
 	virtual void SetInit() = 0;	//初期設定
+	virtual void Shot() = 0;	//弾を撃つ
 
 };

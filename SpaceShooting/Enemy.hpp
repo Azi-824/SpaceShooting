@@ -20,6 +20,6 @@ public:
 	~Enemy();			//デストラクタ
 
 	void SetInit() override;	//初期設定
-
+	void Shot() override;		//弾を撃つ	
 
 };

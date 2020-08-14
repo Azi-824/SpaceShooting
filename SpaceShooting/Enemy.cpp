@@ -27,3 +27,9 @@ void Enemy::SetInit()
 	collision.bottom = collision.top + img->GetHeight();			//‰E‰ºY
 
 }
+
+//’e‚ðŒ‚‚Â
+void Enemy::Shot()
+{
+
+}

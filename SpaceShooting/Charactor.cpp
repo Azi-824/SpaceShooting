@@ -20,6 +20,25 @@ Charactor::~Charactor()
 	delete img;	//img”jŠü
 }
 
+//–ˆ‰ñs‚¤ˆ—
+void Charactor::UpDate()
+{
+	Draw();
+}
+
+//‰ŠúÝ’è
+void Charactor::SetInit()
+{
+	img->SetInit();		//‰æ‘œ‰ŠúÝ’è
+
+	//“–‚½‚è”»’èÝ’è
+	collision.left = (GAME_WIDTH / 2) - (img->GetWidth() / 2);		//¶ãX
+	collision.top = GAME_HEIGHT - img->GetHeight();					//¶ãY
+	collision.right = collision.left + img->GetWidth();				//‰E‰ºX
+	collision.bottom = collision.top + img->GetHeight();			//‰E‰ºY
+
+}
+
 //•`‰æ
 void Charactor::Draw()
 {

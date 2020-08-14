@@ -10,13 +10,24 @@
 Player::Player(Image* img)
 {
 	this->img = img;
-	b_anim = new Animation(ANIM_DIR, ANIM_NAME_P_BULLET, ANIM_BULLET_ALL_CNT, ANIM_BULLET_YOKO_CNT, ANIM_BULLET_TATE_CNT,
+	b_anim = new Animation(ANIM_DIR, ANIM_NAME_BULLET, ANIM_BULLET_ALL_CNT, ANIM_BULLET_YOKO_CNT, ANIM_BULLET_TATE_CNT,
 		ANIM_BULLET_WIDTH, ANIM_BULLET_HEIGHT, ANIM_BULLET_SPEED, true);	//弾アニメーション
 	bullet = new Bullet(b_anim);	//弾生成
 }
 
 //デストラクタ
 Player::~Player(){}
+
+//毎回行う処理
+void Player::UpDate()
+{
+	if (Mouse::OnLeftClick())	//左クリックされたら
+	{
+		Shot();	//弾を撃つ
+	}
+	Draw();
+}
+
 
 //初期設定
 void Player::SetInit()

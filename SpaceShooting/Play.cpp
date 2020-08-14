@@ -54,7 +54,11 @@ void Play::PlayScene()
 
 	back->Draw(GAME_LEFT, GAME_TOP);	//背景描画
 
-	for (auto c : chara) { c->Draw(); }	//キャラ描画
+	for (auto c : chara) 
+	{ 
+		c->UpDate();//毎回行う処理
+		//c->Draw();	//キャラ描画
+	}	
 
 	DrawString(TEST_TEXT_X, TEST_TEXT_Y, PLAY_TEXT, COLOR_WHITE);	//テスト用のテキストを描画
 
@@ -62,15 +66,6 @@ void Play::PlayScene()
 	{
 		//bgm->Stop();			//BGMを止める
 		//NowScene = SCENE_END;	//エンド画面へ
-		chara.at(CHARA_KIND_PLAYER)->Shot();	//プレイヤーが弾を撃つ
 	}
-
-	if (Mouse::OnRightClick())	//左クリックされたら
-	{
-		//bgm->Stop();			//BGMを止める
-		//NowScene = SCENE_END;	//エンド画面へ
-		chara.at(CHARA_KIND_ENEMY1)->Shot();	//プレイヤーが弾を撃つ
-	}
-
 
 }

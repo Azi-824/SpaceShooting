@@ -19,8 +19,7 @@ public:
 	Enemy(Image*);		//コンストラクタ
 	~Enemy();			//デストラクタ
 
-	void Draw() override;		//描画
+	//virtual void UpDate();	//毎回行う処理
 	void SetInit() override;	//初期設定
-	void Shot() override;		//弾を撃つ	
 
 };

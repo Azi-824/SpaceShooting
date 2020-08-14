@@ -14,7 +14,6 @@ class Player : public Charactor	//Charactorを継承
 {
 private:
 
-	Animation* b_anim;	//弾のアニメーション
 	vector<Bullet*> bullet;
 
 public:

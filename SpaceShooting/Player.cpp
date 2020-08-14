@@ -56,7 +56,7 @@ void Player::SetInit()
 	collision.right = collision.left + img->GetWidth();				//‰E‰ºX
 	collision.bottom = collision.top + img->GetHeight();			//‰E‰ºY
 
-	for (auto b : bullet) { b->SetInit(GAME_WIDTH / 2, collision.top); }
+	for (auto b : bullet) { b->SetInit(GAME_WIDTH / 2, collision.top); }	//’e‚Ì‰Šú‰»
 
 }
 
@@ -64,7 +64,7 @@ void Player::SetInit()
 void Player::Draw()
 {
 	img->Draw(collision.left, collision.top);	//•`‰æ(ƒLƒƒƒ‰)
-	for (auto b : bullet) { b->Draw(); }
+	for (auto b : bullet) { b->Draw(); }		//’e•`‰æ
 }
 
 //’e‚ðŒ‚‚Â

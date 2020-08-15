@@ -75,3 +75,9 @@ bool Bullet::InScreen()
 		return true;
 
 }
+
+//“–‚½‚è”»’èŽæ“¾
+RECT Bullet::GetCol()
+{
+	return collision;
+}

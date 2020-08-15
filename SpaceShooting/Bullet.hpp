@@ -31,5 +31,6 @@ public:
 
 	void Draw();				//•`‰æ
 	bool InScreen();			//‰æ–Ê“à‚©
+	RECT GetCol();				//“–‚½‚è”»’èŽæ“¾
 
 };

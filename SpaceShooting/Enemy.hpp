@@ -21,5 +21,6 @@ public:
 
 	//virtual void UpDate();	//–ˆ‰ñs‚¤ˆ—
 	void SetInit() override;	//‰Šúİ’è
+	RECT GetCol();				//“–‚½‚è”»’èæ“¾
 
 };

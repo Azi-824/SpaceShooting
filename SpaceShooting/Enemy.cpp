@@ -34,3 +34,9 @@ void Enemy::SetInit()
 	collision.bottom = collision.top + img->GetHeight();			//‰E‰ºY
 
 }
+
+//“–‚½‚è”»’èŽæ“¾
+RECT Enemy::GetCol()
+{
+	return collision;
+}

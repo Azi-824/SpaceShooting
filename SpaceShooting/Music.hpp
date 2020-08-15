@@ -9,6 +9,7 @@
 //##################### マクロ定義：ファイルパス、名前 ###################
 #define MUSIC_DIR_SE				R"(.\Music\Se)"			//SEのファイル名
 #define MUSIC_DIR_BGM				R"(.\Music\Bgm)"		//BGMのファイル名
+#define MUSIC_DIR_EFFECT			R"(.\Music\Effect)"		//エフェクトのファイル名
 
 //BGM
 #define BGM_NAME_TITLE				R"(\title.mp3)"			//タイトルのBGM
@@ -17,6 +18,7 @@
 
 //SE
 #define SE_NAME_KETTEI				R"(\kettei.mp3)"		//決定の効果音
+#define SE_NAME_EFFECT_EXPLOSION	R"(\explosion.mp3)"		//爆発エフェクトの効果音
 
 //##################### マクロ定義：エラーメッセージ ######################
 #define MUSIC_ERROR_TITLE "MUSIC_ERROR"					//エラータイトル

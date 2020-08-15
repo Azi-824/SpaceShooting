@@ -40,7 +40,8 @@
 //############## —ñ‹“Œ^ #################
 enum ANIM_LIST
 {
-	ANIM_BULLET	//’e
+	ANIM_BULLET,	//’e
+	ANIM_EXPLOSION	//”š”­
 };
 
 using std::vector;

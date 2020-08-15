@@ -24,6 +24,10 @@ Play::Play()
 	}
 	//キャラ
 	enemy.push_back(new Enemy(chara_img.at(CHARA_KIND_ENEMY1)));	//敵1
+	for (auto e : enemy)
+	{
+		if (!e->GetIsLoad()) { IsLoad = false; return; }	//読み込み失敗
+	}
 
 	player = new Player(chara_img.at(CHARA_KIND_PLAYER));//プレイヤー
 	IsLoad = true;	//読み込み成功

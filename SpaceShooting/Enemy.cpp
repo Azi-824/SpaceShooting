@@ -14,6 +14,11 @@ Enemy::Enemy(Image* img)
 	Hp = 0;				//HP
 	this->img = img;	//画像
 	Hit = false;		//当たってない
+	IsLoad = false;		//読み込めたか
+
+	exp_se = new Music(MUSIC_DIR_EFFECT, SE_NAME_EFFECT_EXPLOSION);	//爆発効果音読み込み
+	IsLoad = exp_se->GetIsLoad();	//読み込めたか
+	explosion = new Effect(new Animation(ANIM_EXPLOSION, ANIM_EXPLOSION_SPEED, false), exp_se);	//爆発エフェクト生成
 
 }
 
@@ -21,7 +26,7 @@ Enemy::Enemy(Image* img)
 Enemy::~Enemy() 
 {
 	delete img;			//img破棄
-	//delete explosion;	//explosion破棄
+	delete explosion;	//explosion破棄
 }
 
 //毎回行う処理
@@ -42,14 +47,27 @@ void Enemy::UpDate(Player* player)
 		}
 	}
 
+
 	Draw();	//描画
+
+	if (Hit)	//当たったら
+	{
+		explosion->DrawCenter(collision);	//爆発
+		if (explosion->GetIsEffectEnd())	//エフェクト描画終了したら
+		{
+			explosion->Reset();	//エフェクトリセット
+			Hit = false;
+		}
+	}
+
 }
 
 
 //初期設定
 void Enemy::SetInit()
 {
-	img->SetInit();		//画像初期設定
+	img->SetInit();			//画像
+	explosion->SetInit();	//エフェクト
 
 	//当たり判定設定
 	collision.left = (GAME_WIDTH / 2) - (img->GetWidth() / 2);		//左上X
@@ -75,4 +93,10 @@ bool Enemy::OnCollision(RECT col)
 		return true;	//当たってる
 	else
 		return false;	//当たってない
+}
+
+//読み込めたか取得
+bool Enemy::GetIsLoad()
+{
+	return IsLoad;
 }

@@ -9,6 +9,7 @@
 #include "Bullet.hpp"
 
 //############# マクロ定義 ############
+#define ROTA_BASE	(GAME_WIDTH / 2)		//回転角度計算の基準値
 
 //############# クラス定義 ############
 class Player
@@ -20,6 +21,9 @@ private:
 	vector<Bullet*> bullet;	//弾
 
 	int Hp;			//HP
+	double rota;	//角度
+
+	void CalcRota();	//角度計算
 
 public:
 

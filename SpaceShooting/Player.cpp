@@ -12,6 +12,7 @@ Player::Player(Image* img)
 	//メンバー初期化
 	collision = { 0 };	//当たり判定
 	Hp = 0;				//HP
+	rota = 0.0;			//角度
 
 	this->img = img;
 	bullet.push_back(new Bullet());
@@ -30,6 +31,10 @@ Player::~Player()
 //毎回行う処理
 void Player::UpDate()
 {
+
+	//角度計算
+	CalcRota();
+
 	if (Mouse::OnLeftClick())	//左クリックされたら
 	{
 		Shot();	//弾を撃つ
@@ -68,7 +73,7 @@ void Player::SetInit()
 //描画
 void Player::Draw()
 {
-	img->DrawRota(collision.left, collision.top,-0.8);	//描画(キャラ)
+	img->DrawRota(collision.left, collision.top,rota);	//描画(キャラ)
 	for (auto b : bullet) { b->Draw(); }		//弾描画
 }
 
@@ -94,4 +99,20 @@ RECT Player::GetBulletCol(int element)
 int Player::GetBulleMax()
 {
 	return Bullet::GetElementMax();
+}
+
+//角度計算
+void Player::CalcRota()
+{
+	int x = 0, y = 0;		//マウス位置取得用
+	Mouse::GetPos(&x, &y);	//マウス位置取得
+
+	if (x < GAME_LEFT || x > GAME_WIDTH)	//画面外の場合
+		return;			//計算しない
+
+	x -= ROTA_BASE;			//基準値からの距離を測定
+
+	//角度計算処理
+	rota = (double)x / ROTA_BASE;
+
 }

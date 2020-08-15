@@ -6,6 +6,8 @@
 
 //########## ヘッダーファイル読み込み ##########
 #include "Global.hpp"
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 //########## マクロ定義：画像のファイルパスと名前 ##########
 #define IMG_DIR_BACK		R"(.\Image\Back)"			//背景画像のファイルの場所
@@ -71,13 +73,14 @@ public:
 	bool GetIsDraw();				//描画してよいか取得
 	void SetIsDraw(bool);			//描画してよいか設定
 
-	void Draw(int, int);		//画像を描画
-	void DrawCenter();			//画像を描画（中央）
-	void DrawCenterY(int);		//画像を描画（上下中央）
-	void DrawCenterX(int);		//画像を描画（左右中央）
+	void Draw(int, int);			//画像を描画
+	void DrawRota(int, int, double);//画像を描画（回転）
+	void DrawCenter();				//画像を描画（中央）
+	void DrawCenterY(int);			//画像を描画（上下中央）
+	void DrawCenterX(int);			//画像を描画（左右中央）
 
-	void SetIsFade(bool);		//フェードアウトするか設定
-	bool GetFadeEnd();			//フェードエフェクトが終了しているか取得
+	void SetIsFade(bool);			//フェードアウトするか設定
+	bool GetFadeEnd();				//フェードエフェクトが終了しているか取得
 
 };
 

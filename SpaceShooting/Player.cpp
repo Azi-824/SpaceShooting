@@ -68,7 +68,7 @@ void Player::SetInit()
 //•`‰æ
 void Player::Draw()
 {
-	img->Draw(collision.left, collision.top);	//•`‰æ(ƒLƒƒƒ‰)
+	img->DrawRota(collision.left, collision.top,-0.8);	//•`‰æ(ƒLƒƒƒ‰)
 	for (auto b : bullet) { b->Draw(); }		//’e•`‰æ
 }
 

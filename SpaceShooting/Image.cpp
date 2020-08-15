@@ -217,6 +217,70 @@ void Image::Draw(int x, int y)
 
 }
 
+//画像を描画（回転）
+void Image::DrawRota(int x, int y,double rota)
+{
+
+	static int cnt = FADE_MAX_CNT;				//カウント用
+
+	//指定座標が画像の中心値のため、中心値を計算
+	x = x + (Width / 2);
+	y = y + (Height / 2);
+
+	if (IsFade)	//フェードアウトするときは
+	{
+		if (!FadeEnd)	//フェードアウト終了していなければ
+		{
+
+			if (IsDraw)	//描画してよければ
+			{
+
+				//60フレーム分、待つ
+				if (cnt > 0)
+				{
+					--cnt;	//カウントアップ
+				}
+				else
+				{
+					FadeEnd = true;	//フェード終了
+				}
+
+				//フェードアウトの処理
+				double ToukaPercent = cnt / (double)FADE_MAX_CNT;						//透過%を計算
+				SetDrawBlendMode(DX_BLENDMODE_ALPHA, ToukaPercent * TOUKA_MAX_VALUE);	//透過させる
+				DrawRotaGraph(x, y, 1.0, rota * (M_PI / 180), Handle, TRUE);							//回転描画
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);								//透過をやめる
+
+
+			}
+
+
+		}
+		else 		//フェードアウト終了したら
+		{
+			IsDraw = false;			//描画しない
+			cnt = FADE_MAX_CNT;		//カウントリセット
+			IsFade = false;			//フェードアウトしない
+		}
+
+	}
+	else		//フェードアウトしない時は
+	{
+		cnt = FADE_MAX_CNT;		//カウントリセット
+
+		if (IsDraw)	//描画してよければ
+		{
+			DrawRotaGraph(x, y, 1.0, rota, Handle, TRUE);	//回転描画
+		}
+
+	}
+
+
+	return;
+
+}
+
+
 //画像を描画（中央）
 void Image::DrawCenter()
 {

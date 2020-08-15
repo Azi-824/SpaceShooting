@@ -33,29 +33,33 @@ Enemy::~Enemy()
 void Enemy::UpDate(Player* player)
 {
 
-	//当たり判定
-	if (OnCollision(player->GetCol()))	//プレイヤーと当たっていたら
+	if (img->GetIsDraw())	//表示中なら
 	{
-		Hit = true;	//当たった
-	}
-
-	for (int i = 0; i < player->GetBulleMax(); ++i)
-	{
-		if (OnCollision(player->GetBulletCol(i)))	//弾と当たっていたら
+		//当たり判定
+		if (OnCollision(player->GetCol()))	//プレイヤーと当たっていたら
 		{
 			Hit = true;	//当たった
 		}
+
+		for (int i = 0; i < player->GetBulleMax(); ++i)
+		{
+			if (OnCollision(player->GetBulletCol(i)))	//弾と当たっていたら
+			{
+				Hit = true;	//当たった
+			}
+		}
+
+		Draw();	//描画
+
 	}
-
-
-	Draw();	//描画
 
 	if (Hit)	//当たったら
 	{
 		explosion->DrawCenter(collision);	//爆発
 		if (explosion->GetIsEffectEnd())	//エフェクト描画終了したら
 		{
-			explosion->Reset();	//エフェクトリセット
+			explosion->Reset();		//エフェクトリセット
+			img->SetIsDraw(false);	//非表示
 			Hit = false;
 		}
 	}

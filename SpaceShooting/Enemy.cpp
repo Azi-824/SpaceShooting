@@ -9,17 +9,24 @@
 //引数：Image *：キャラクターの画像
 Enemy::Enemy(Image* img)
 {
-	this->img = img;
+	//メンバー初期化
+	collision = { 0 };	//当たり判定
+	Hp = 0;				//HP
+	this->img = img;	//画像
+
 }
 
 //デストラクタ
-Enemy::~Enemy() {}
+Enemy::~Enemy() 
+{
+	delete img;	//img破棄
+}
 
 //毎回行う処理
-//void Enemy::UpDate()
-//{
-//
-//}
+void Enemy::UpDate()
+{
+	Draw();	//描画
+}
 
 
 //初期設定
@@ -39,4 +46,10 @@ void Enemy::SetInit()
 RECT Enemy::GetCol()
 {
 	return collision;
+}
+
+//描画
+void Enemy::Draw()
+{
+	img->Draw(collision.left, collision.top);	//描画
 }

@@ -8,11 +8,16 @@
 #include "Global.hpp"
 
 //########## マクロ定義：画像のファイルパスと名前 ##########
-#define IMG_DIR_BACK		R"(.\Image\Back)"				//背景画像のファイルの場所
+#define IMG_DIR_BACK		R"(.\Image\Back)"			//背景画像のファイルの場所
+#define CHAR_IMG_DIR		R"(.\Image\Charactor)"		//キャラの画像ファイルのディレクトリ
 
-#define IMG_NAME_TITLE		R"(\title.jpg)"					//タイトル画面の背景画像の名前
-#define IMG_NAME_PLAY		R"(\play.jpg)"					//プレイ画面の背景画像の名前
-#define IMG_NAME_RANKING	R"(\ranking.jpg)"				//ランキング画面の背景画像の名前
+#define PLAYER_IMG_NAME		R"(\player.png)"			//プレイヤーの画像ファイルの名前
+#define ENEMY1_IMG_NAME		R"(\enemy1.png)"			//敵キャラ1の画像ファイルの名前
+
+
+#define IMG_NAME_TITLE		R"(\title.jpg)"				//タイトル画面の背景画像の名前
+#define IMG_NAME_PLAY		R"(\play.jpg)"				//プレイ画面の背景画像の名前
+#define IMG_NAME_RANKING	R"(\ranking.jpg)"			//ランキング画面の背景画像の名前
 
 #define FADE_MAX_CNT	60	//フェード処理のカウント最大値
 #define TOUKA_MAX_VALUE	255	//透過の最大値

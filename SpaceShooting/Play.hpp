@@ -10,13 +10,21 @@
 
 //############### マクロ定義 #################
 
+//##################### 列挙型 ##################
+enum CHARA_KIND
+{
+	CHARA_KIND_PLAYER,	//プレイヤー
+	CHARA_KIND_ENEMY1	//敵1
+};
+
 //############### クラス定義 #################
 class Play : public Scene	//Sceneクラスを継承
 {
 private:
 
 	vector<Image*> chara_img;	//キャラの画像
-	vector<Charactor*> chara;	//キャラ
+	vector<Enemy*> enemy;		//敵
+	Player* player;				//プレイヤー
 
 public:
 

@@ -4,23 +4,30 @@
 #pragma once
 
 //############ ヘッダファイル読み込み ###############
-#include "Charactor.hpp"
+#include "Global.hpp"
+#include "Image.hpp"
 
 //############ マクロ定義 ################
 
 //############ クラス定義 ################
-class Enemy : public Charactor	//Charactorクラス継承
+class Enemy
 {
 
 private:
+
+	Image* img;		//画像
+	RECT collision;	//当たり判定
+
+	int Hp;			//HP
 
 public:
 
 	Enemy(Image*);		//コンストラクタ
 	~Enemy();			//デストラクタ
 
-	//virtual void UpDate();	//毎回行う処理
-	void SetInit() override;	//初期設定
-	RECT GetCol();				//当たり判定取得
+	void UpDate();		//毎回行う処理
+	void SetInit();		//初期設定
+	RECT GetCol();		//当たり判定取得
+	void Draw();		//描画
 
 };

@@ -9,6 +9,10 @@
 //引数：Image *：キャラクターの画像
 Player::Player(Image* img)
 {
+	//メンバー初期化
+	collision = { 0 };	//当たり判定
+	Hp = 0;				//HP
+
 	this->img = img;
 	Animation::CreateList();
 	bullet.push_back(new Bullet());
@@ -20,6 +24,8 @@ Player::~Player()
 	for (auto b : bullet) { delete b; }
 	vector<Bullet*> v;
 	bullet.swap(v);
+
+	delete img;	//img破棄
 }
 
 //毎回行う処理

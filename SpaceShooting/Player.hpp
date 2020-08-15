@@ -4,26 +4,31 @@
 #pragma once
 
 //############# ヘッダファイル読み込み ###########
-#include "Charactor.hpp"
+#include "Global.hpp"
+#include "Image.hpp"
 #include "Bullet.hpp"
 
 //############# マクロ定義 ############
 
 //############# クラス定義 ############
-class Player : public Charactor	//Charactorを継承
+class Player
 {
 private:
 
-	vector<Bullet*> bullet;
+	Image* img;		//画像
+	RECT collision;	//当たり判定
+	vector<Bullet*> bullet;	//弾
+
+	int Hp;			//HP
 
 public:
 
 	Player(Image*);		//コンストラクタ
 	~Player();			//デストラクタ
 
-	void UpDate() override;		//毎回行う処理
-	void Draw() override;		//描画
-	void SetInit() override;	//初期設定
-	void Shot();				//弾を打つ
+	void UpDate();		//毎回行う処理
+	void Draw();		//描画
+	void SetInit();		//初期設定
+	void Shot();		//弾を打つ
 
 };

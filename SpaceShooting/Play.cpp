@@ -23,9 +23,9 @@ Play::Play()
 		if (!c->GetIsLoad()) { IsLoad = false; return; }	//読み込み失敗
 	}
 	//キャラ
-	chara.push_back(new Player(chara_img.at(CHARA_KIND_PLAYER)));	//プレイヤー
-	chara.push_back(new Enemy(chara_img.at(CHARA_KIND_ENEMY1)));	//敵1
+	enemy.push_back(new Enemy(chara_img.at(CHARA_KIND_ENEMY1)));	//敵1
 
+	player = new Player(chara_img.at(CHARA_KIND_PLAYER));//プレイヤー
 	IsLoad = true;	//読み込み成功
 
 }
@@ -33,7 +33,12 @@ Play::Play()
 //デストラクタ
 Play::~Play()
 {
-
+	delete player;	//player破棄
+	
+	//敵
+	for (auto e : enemy) { delete e; }	//delete破棄
+	vector<Enemy*> v;
+	enemy.swap(v);
 }
 
 //初期設定
@@ -43,7 +48,8 @@ void Play::SetInit()
 	bgm->SetInit(DX_PLAYTYPE_LOOP, 30);		//BGM初期設定
 
 	//キャラ
-	for (auto c : chara) { c->SetInit(); }
+	for (auto c : enemy) { c->SetInit(); }
+	player->SetInit();
 }
 
 //プレイ画面の処理
@@ -54,11 +60,12 @@ void Play::PlayScene()
 
 	back->Draw(GAME_LEFT, GAME_TOP);	//背景描画
 
-	for (auto c : chara) 
+	for (auto e : enemy) 
 	{ 
-		c->UpDate();//毎回行う処理
-		//c->Draw();	//キャラ描画
+		e->UpDate();	//毎回行う処理
 	}	
+
+	player->UpDate();	//毎回行う処理
 
 	DrawString(TEST_TEXT_X, TEST_TEXT_Y, PLAY_TEXT, COLOR_WHITE);	//テスト用のテキストを描画
 

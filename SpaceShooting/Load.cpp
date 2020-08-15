@@ -9,7 +9,7 @@
 //コンストラクタ
 Load::Load()
 {
-	IsLoad = true;	//読み込み成功
+	IsLoad = Animation::CreateList();	//アニメーションリスト作成
 }
 
 //デストラクタ

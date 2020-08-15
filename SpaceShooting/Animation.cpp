@@ -64,12 +64,38 @@ bool Animation::CreateList()
 	vector<int> w;	//作業用
 	string Path;	//path
 
+	//***************************** 弾のアニメーション *****************************************
 	w.resize(ANIM_BULLET_ALL_CNT);
 	Path = ANIM_DIR;
 	Path += ANIM_NAME_BULLET;
 
 	//読み込み
 	LoadDivGraph(Path.c_str(), ANIM_BULLET_ALL_CNT, ANIM_BULLET_YOKO_CNT, ANIM_BULLET_TATE_CNT, ANIM_BULLET_WIDTH, ANIM_BULLET_HEIGHT, &w.front());
+
+	if (w.front() == -1)	//画像が読み込めなかったとき
+	{
+		string ErrorMsg(ANIMATION_ERROR_MSG);		//エラーメッセージ作成
+		ErrorMsg += TEXT('\n');						//改行
+		ErrorMsg += Path;							//画像のパス
+
+		MessageBox(
+			NULL,
+			ErrorMsg.c_str(),	//char * を返す
+			TEXT(ANIMATION_ERROR_TTILE),
+			MB_OK);
+
+		return false;//読み込み失敗
+	}
+
+	AnimList.push_back(w);	//ハンドルを保存
+
+	//***************************** 爆発のアニメーション *****************************************
+	w.resize(ANIM_EXPLOSION_ALL_CNT);
+	Path = ANIM_DIR;
+	Path += ANIM_NAME_EXPLOSION;
+
+	//読み込み
+	LoadDivGraph(Path.c_str(), ANIM_EXPLOSION_ALL_CNT, ANIM_EXPLOSION_YOKO_CNT, ANIM_EXPLOSION_TATE_CNT, ANIM_EXPLOSION_WIDTH, ANIM_EXPLOSION_HEIGHT, &w.front());
 
 	if (w.front() == -1)	//画像が読み込めなかったとき
 	{

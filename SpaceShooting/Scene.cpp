@@ -14,7 +14,6 @@ Scene::Scene()
 {
 	back = new Image();	//インスタンス生成
 	bgm = new Music();	//インスタンス生成
-	Animation::CreateList();	//アニメーションリスト作成
 	IsLoad = false;		//読み込めていない
 }
 

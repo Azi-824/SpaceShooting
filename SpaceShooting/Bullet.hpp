@@ -19,6 +19,7 @@ private:
 	RECT collision;			//当たり判定
 	int Speed;				//速さ
 	bool IsDraw;			//描画しているか
+	static int ElementCnt;	//要素番号カウント用
 
 public:
 
@@ -32,5 +33,6 @@ public:
 	void Draw();				//描画
 	bool InScreen();			//画面内か
 	RECT GetCol();				//当たり判定取得
+	static int GetElementMax();	//要素番号取得
 
 };

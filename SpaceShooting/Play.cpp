@@ -62,7 +62,7 @@ void Play::PlayScene()
 
 	for (auto e : enemy) 
 	{ 
-		e->UpDate();	//–ˆ‰ñs‚¤ˆ—
+		e->UpDate(player);	//–ˆ‰ñs‚¤ˆ—
 	}	
 
 	player->UpDate();	//–ˆ‰ñs‚¤ˆ—

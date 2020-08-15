@@ -13,6 +13,7 @@ Enemy::Enemy(Image* img)
 	collision = { 0 };	//“–‚½‚è”»’è
 	Hp = 0;				//HP
 	this->img = img;	//‰æ‘œ
+	Hit = false;		//“–‚½‚Á‚Ä‚È‚¢
 
 }
 
@@ -23,8 +24,23 @@ Enemy::~Enemy()
 }
 
 //–ˆ‰ñs‚¤ˆ—
-void Enemy::UpDate()
+void Enemy::UpDate(Player* player)
 {
+
+	//“–‚½‚è”»’è
+	if (OnCollision(player->GetCol()))	//ƒvƒŒƒCƒ„[‚Æ“–‚½‚Á‚Ä‚¢‚½‚ç
+	{
+		Hit = true;	//“–‚½‚Á‚½
+	}
+
+	for (int i = 0; i < player->GetBulleMax(); ++i)
+	{
+		if (OnCollision(player->GetBulletCol(i)))	//’e‚Æ“–‚½‚Á‚Ä‚¢‚½‚ç
+		{
+			Hit = true;	//“–‚½‚Á‚½
+		}
+	}
+
 	Draw();	//•`‰æ
 }
 
@@ -42,14 +58,20 @@ void Enemy::SetInit()
 
 }
 
-//“–‚½‚è”»’èæ“¾
-RECT Enemy::GetCol()
-{
-	return collision;
-}
-
 //•`‰æ
 void Enemy::Draw()
 {
 	img->Draw(collision.left, collision.top);	//•`‰æ
+}
+
+//“–‚½‚è”»’è
+bool Enemy::OnCollision(RECT col)
+{
+	if (collision.left < col.right &&
+		collision.right > col.left &&
+		collision.top < col.bottom &&
+		collision.bottom > col.top)
+		return true;	//“–‚½‚Á‚Ä‚é
+	else
+		return false;	//“–‚½‚Á‚Ä‚È‚¢
 }

@@ -78,3 +78,21 @@ void Player::Shot()
 {
 	bullet.back()->SetIsDraw(true);
 }
+
+//“–‚½‚è”»’èæ“¾
+RECT Player::GetCol()
+{
+	return collision;
+}
+
+//’e‚Ì“–‚½‚è”»’èæ“¾
+RECT Player::GetBulletCol(int element)
+{
+	return bullet.at(element)->GetCol();
+}
+
+//Œ»İ‚Ì’e‚Ì”‚ğæ“¾
+int Player::GetBulleMax()
+{
+	return Bullet::GetElementMax();
+}

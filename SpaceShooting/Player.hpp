@@ -23,12 +23,15 @@ private:
 
 public:
 
-	Player(Image*);		//コンストラクタ
-	~Player();			//デストラクタ
+	Player(Image*);			//コンストラクタ
+	~Player();				//デストラクタ
 
-	void UpDate();		//毎回行う処理
-	void Draw();		//描画
-	void SetInit();		//初期設定
-	void Shot();		//弾を打つ
+	void UpDate();			//毎回行う処理
+	void Draw();			//描画
+	void SetInit();			//初期設定
+	void Shot();			//弾を打つ
+	RECT GetCol();			//当たり判定取得
+	RECT GetBulletCol(int);	//弾の当たり判定取得
+	int GetBulleMax();		//現在の玉の数を取得
 
 };

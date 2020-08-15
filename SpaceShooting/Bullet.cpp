@@ -5,6 +5,8 @@
 
 //############## クラス定義 ################
 
+int Bullet::ElementCnt = 0;	//要素数
+
 //コンストラクタ
 /*
 引数：Animation *：弾のアニメーション
@@ -16,6 +18,7 @@ Bullet::Bullet(Animation* anim)
 	collision = { 0 };		//当たり判定
 	Speed = 0;				//速さ
 	IsDraw = false;			//最初は描画しない
+	++ElementCnt;			//要素数カウント
 }
 
 //コンストラクタ
@@ -26,12 +29,14 @@ Bullet::Bullet()
 	collision = { 0 };		//当たり判定
 	Speed = 0;				//速さ
 	IsDraw = false;			//最初は描画しない
+	++ElementCnt;			//要素数カウント
 }
 
 //デストラクタ
 Bullet::~Bullet()
 {
 	delete anim;	//anim破棄
+	--ElementCnt;	//カウントダウン
 }
 
 //初期設定
@@ -80,4 +85,10 @@ bool Bullet::InScreen()
 RECT Bullet::GetCol()
 {
 	return collision;
+}
+
+//要素数取得
+int Bullet::GetElementMax()
+{
+	return ElementCnt;
 }

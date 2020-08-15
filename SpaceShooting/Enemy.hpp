@@ -6,6 +6,7 @@
 //############ ヘッダファイル読み込み ###############
 #include "Global.hpp"
 #include "Image.hpp"
+#include "Player.hpp"
 
 //############ マクロ定義 ################
 
@@ -19,15 +20,17 @@ private:
 	RECT collision;	//当たり判定
 
 	int Hp;			//HP
+	bool Hit;		//当たった
+
+	bool OnCollision(RECT);	//当たり判定の処理
 
 public:
 
-	Enemy(Image*);		//コンストラクタ
-	~Enemy();			//デストラクタ
+	Enemy(Image*);			//コンストラクタ
+	~Enemy();				//デストラクタ
 
-	void UpDate();		//毎回行う処理
-	void SetInit();		//初期設定
-	RECT GetCol();		//当たり判定取得
-	void Draw();		//描画
+	void UpDate(Player*);	//毎回行う処理
+	void SetInit();			//初期設定
+	void Draw();			//描画
 
 };

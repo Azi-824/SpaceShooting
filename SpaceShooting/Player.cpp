@@ -14,7 +14,6 @@ Player::Player(Image* img)
 	Hp = 0;				//HP
 
 	this->img = img;
-	Animation::CreateList();
 	bullet.push_back(new Bullet());
 }
 

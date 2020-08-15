@@ -20,7 +20,8 @@ Enemy::Enemy(Image* img)
 //デストラクタ
 Enemy::~Enemy() 
 {
-	delete img;	//img破棄
+	delete img;			//img破棄
+	//delete explosion;	//explosion破棄
 }
 
 //毎回行う処理

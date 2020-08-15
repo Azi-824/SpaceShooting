@@ -7,6 +7,7 @@
 #include "Global.hpp"
 #include "Image.hpp"
 #include "Player.hpp"
+//#include "Effect.hpp"
 
 //############ マクロ定義 ################
 
@@ -18,6 +19,7 @@ private:
 
 	Image* img;		//画像
 	RECT collision;	//当たり判定
+	//Effect* explosion;	//爆発エフェクト
 
 	int Hp;			//HP
 	bool Hit;		//当たった

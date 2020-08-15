@@ -8,6 +8,7 @@
 #include "Mouse.hpp"
 #include "Image.hpp"
 #include "Music.hpp"
+#include "Animation.hpp"
 
 //################### マクロ定義 #########################
 //テキスト関係

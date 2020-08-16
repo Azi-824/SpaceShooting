@@ -12,9 +12,11 @@ Enemy::Enemy(Image* img)
 	//メンバー初期化
 	collision = { 0 };	//当たり判定
 	Hp = 0;				//HP
+	Speed = 0;			//速さ
 	this->img = img;	//画像
 	Hit = false;		//当たってない
 	IsLoad = false;		//読み込めたか
+	IsMove = true;		//移動する
 
 	exp_se = new Music(MUSIC_DIR_EFFECT, SE_NAME_EFFECT_EXPLOSION);	//爆発効果音読み込み
 	IsLoad = exp_se->GetIsLoad();	//読み込めたか
@@ -39,9 +41,21 @@ void Enemy::UpDate(Player* player)
 		if (OnCollision(player->GetCol()))	//プレイヤーと当たっていたら
 		{
 			Hit = true;	//当たった
+			IsMove = false;	//動かない
 		}
 
+		//弾との当たり判定
+		for (int i = 0; i < player->GetBulleMax(); ++i)
+		{
+			if (OnCollision(player->GetBulletCol(i)))	//弾と当たっていたら
+			{
+				Hit = true;		//当たった
+				IsMove = false;	//動かない
+				player->HitBullet(i);	//弾が当たった
+			}
+		}
 
+		Move();	//移動
 		Draw();	//描画
 
 	}
@@ -65,6 +79,7 @@ void Enemy::SetInit()
 {
 	img->SetInit();			//画像
 	explosion->SetInit();	//エフェクト
+	Speed = ENEMY_SPD;		//速さ
 
 	//当たり判定設定
 	collision.left = (GAME_WIDTH / 2) - (img->GetWidth() / 2);		//左上X
@@ -96,4 +111,14 @@ bool Enemy::OnCollision(RECT col)
 bool Enemy::GetIsLoad()
 {
 	return IsLoad;
+}
+
+//移動
+void Enemy::Move()
+{
+	if (IsMove)	//移動するときは
+	{
+		collision.top += Speed;
+		collision.bottom += Speed;
+	}
 }

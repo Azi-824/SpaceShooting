@@ -37,5 +37,6 @@ public:
 	RECT GetCol();			//“–‚½‚è”»’èæ“¾
 	RECT GetBulletCol(int);	//’e‚Ì“–‚½‚è”»’èæ“¾
 	int GetBulleMax();		//Œ»İ‚Ì‹Ê‚Ì”‚ğæ“¾
+	void HitBullet(int);	//“G‚É’e‚ª“–‚½‚Á‚½
 
 };

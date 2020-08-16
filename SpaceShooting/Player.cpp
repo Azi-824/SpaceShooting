@@ -116,3 +116,10 @@ int Player::GetBulleMax()
 {
 	return Bullet::GetElementMax();
 }
+
+//“G‚É’e‚ª“–‚½‚Á‚½
+void Player::HitBullet(int element)
+{
+	delete bullet.at(element);	//”jŠü
+	bullet.erase(bullet.begin() + element);
+}

@@ -35,5 +35,6 @@ public:
 	bool InScreen();			//‰æ–Ê“à‚©
 	RECT GetCol();				//“–‚½‚è”»’èæ“¾
 	static int GetElementMax();	//—v‘f”Ô†æ“¾
+	void SetIsMove(bool);		//ˆÚ“®‚·‚é‚©
 
 };

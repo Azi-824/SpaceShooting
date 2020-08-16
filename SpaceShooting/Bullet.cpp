@@ -89,3 +89,9 @@ int Bullet::GetElementMax()
 {
 	return ElementCnt;
 }
+
+//ˆÚ“®‚·‚é‚©İ’è
+void Bullet::SetIsMove(bool move)
+{
+	IsMove = move;
+}

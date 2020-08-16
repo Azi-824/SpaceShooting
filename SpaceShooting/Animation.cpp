@@ -50,7 +50,6 @@ Animation::Animation(int number, double changeSpeed, bool IsLoop)
 //デストラクタ
 Animation::~Animation()
 {
-	DeleteGraph(Handle.front());
 
 	//vectorのメモリ解放を行う
 	vector<int> v;			//空のvectorを作成する

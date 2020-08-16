@@ -23,6 +23,7 @@ Bullet::Bullet()
 Bullet::~Bullet()
 {
 	delete anim;	//anim破棄
+	anim = new Animation(ANIM_BULLET, ANIM_BULLET_SPEED, true);		//弾のアニメーション
 	--ElementCnt;	//カウントダウン
 }
 

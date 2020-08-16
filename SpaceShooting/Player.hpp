@@ -7,6 +7,7 @@
 #include "Global.hpp"
 #include "Image.hpp"
 #include "Bullet.hpp"
+#include "Collision.hpp"
 
 //############# マクロ定義 ############
 #define ROTA_BASE	(GAME_WIDTH / 2)		//回転角度計算の基準値
@@ -18,6 +19,7 @@ private:
 
 	Image* img;		//画像
 	RECT collision;	//当たり判定
+	Collision* col;	//当たり判定
 	vector<Bullet*> bullet;	//弾
 
 	int Hp;			//HP

@@ -13,6 +13,7 @@ Player::Player(Image* img)
 	collision = { 0 };	//“–‚½‚è”»’è
 	Hp = 0;				//HP
 	rota = 0.0;			//Šp“x
+	col = new Collision();	//“–‚½‚è”»’èì¬
 
 	this->img = img;
 	bullet.push_back(new Bullet());
@@ -66,6 +67,8 @@ void Player::SetInit()
 	collision.top = GAME_HEIGHT - img->GetHeight();					//¶ãY
 	collision.right = collision.left + img->GetWidth();				//‰E‰ºX
 	collision.bottom = collision.top + img->GetHeight();			//‰E‰ºY
+	
+	col->Set((GAME_WIDTH / 2) - (img->GetWidth() / 2), GAME_HEIGHT - img->GetHeight(), collision.left + img->GetWidth(), collision.top + img->GetHeight());
 
 
 	for (auto b : bullet) { b->SetInit(GAME_WIDTH / 2, collision.top); }	//’e‚Ì‰Šú‰»
@@ -77,7 +80,8 @@ void Player::Draw()
 {
 	img->DrawRota(rota);	//•`‰æ(ƒLƒƒƒ‰)
 	//img->Draw(collision.left, collision.top);
-	DrawBox(collision.left, collision.top, collision.right, collision.bottom,COLOR_RED,FALSE);
+	//DrawBox(collision.left, collision.top, collision.right, collision.bottom,COLOR_RED,FALSE);
+	col->Draw();
 	DrawFormatString(0, 150, COLOR_WHITE, "left:%d\ntop:%d\nright:%d\nbottom:%d", collision.left, collision.top, collision.right, collision.bottom);
 	for (auto b : bullet) { b->Draw(); }		//’e•`‰æ
 }

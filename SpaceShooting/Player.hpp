@@ -14,12 +14,9 @@ class Player : public Charactor	//CharactorŒp³
 {
 private:
 
-	//Image* img;		//‰æ‘œ
-	//RECT collision;	//“–‚½‚è”»’è
 
 	int SpawnX;		//’e”­Ë’n“_X
 	int SpawnY;		//’e”­Ë’n“_Y
-	//int Hp;			//HP
 
 	void Move();	//ˆÚ“®
 
@@ -31,7 +28,5 @@ public:
 	void UpDate(Charactor*) override;	//–ˆ‰ñs‚¤ˆ—
 	void Draw() override;	//•`‰æ
 	void SetInit() override;//‰Šúİ’è
-	RECT GetBulletCol(int);	//’e‚Ì“–‚½‚è”»’èæ“¾
-	int GetBulleMax();		//Œ»İ‚Ì‹Ê‚Ì”‚ğæ“¾
 
 };

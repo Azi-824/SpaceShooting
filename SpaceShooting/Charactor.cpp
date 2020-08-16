@@ -54,3 +54,15 @@ RECT Charactor::GetCol()
 {
 	return collision;
 }
+
+//’e‚Ì“–‚½‚è”»’èæ“¾
+RECT Charactor::GetBulletCol(int element)
+{
+	return bullet.at(element)->GetCol();
+}
+
+//Œ»İ‚Ì’e‚Ì”‚ğæ“¾
+int Charactor::GetBulleMax()
+{
+	return Bullet::GetElementMax();
+}

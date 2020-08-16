@@ -19,9 +19,7 @@ Player::Player(Image* img)
 }
 
 //デストラクタ
-Player::~Player()
-{
-}
+Player::~Player(){}
 
 //毎回行う処理
 void Player::UpDate(Charactor* chara)
@@ -75,18 +73,6 @@ void Player::Draw()
 {
 	img->Draw(collision.left, collision.top);
 	for (auto b : bullet) { b->Draw(); }		//弾描画
-}
-
-//弾の当たり判定取得
-RECT Player::GetBulletCol(int element)
-{
-	return bullet.at(element)->GetCol();
-}
-
-//現在の弾の数を取得
-int Player::GetBulleMax()
-{
-	return Bullet::GetElementMax();
 }
 
 //移動処理

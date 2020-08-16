@@ -17,12 +17,9 @@ class Enemy : public Charactor	//Charactor継承
 
 private:
 
-	//Image* img;		//画像
-	//RECT collision;	//当たり判定
 	Effect* explosion;	//爆発エフェクト
 	Music* exp_se;		//爆発音
 
-	//int Hp;			//HP
 	bool Hit;		//当たった
 	bool IsLoad;	//読み込めた
 

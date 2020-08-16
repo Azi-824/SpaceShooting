@@ -11,6 +11,9 @@
 
 //############ マクロ定義 ################
 #define ENEMY_SPD	3	//敵の移動速度
+#define SPAWN_LEFT	150	//敵の発生左端
+#define SPAWN_RIGHT	710	//敵の発生右端
+
 
 //############ クラス定義 ################
 class Enemy
@@ -31,6 +34,7 @@ private:
 	bool IsMove;	//移動しているか
 
 	bool OnCollision(RECT);	//当たり判定の処理
+	void Spawn();			//生成
 
 public:
 

@@ -29,6 +29,7 @@ Bullet::~Bullet()
 //‰ŠúÝ’è
 void Bullet::SetInit(int x, int y)
 {
+	anim->SetInit();
 	Speed = BULLET_SPEED;
 	//“–‚½‚è”»’èÝ’è
 	collision.left = x;
@@ -45,6 +46,7 @@ void Bullet::Draw()
 	if (IsDraw)	//•`‰æ‚·‚é‚Æ‚«
 	{
 		anim->Draw(collision.left,collision.top);	//•`‰æ
+		DrawBox(collision.left, collision.top, collision.right, collision.bottom, COLOR_RED, FALSE);
 	}
 }
 

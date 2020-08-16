@@ -66,8 +66,8 @@ void Enemy::UpDate(Player* player)
 		if (explosion->GetIsEffectEnd())	//エフェクト描画終了したら
 		{
 			explosion->Reset();		//エフェクトリセット
-			img->SetIsDraw(false);	//非表示
-			Hit = false;
+			//img->SetIsDraw(false);	//非表示
+			Spawn();				//生成
 		}
 	}
 
@@ -80,12 +80,22 @@ void Enemy::SetInit()
 	img->SetInit();			//画像
 	explosion->SetInit();	//エフェクト
 	Speed = ENEMY_SPD;		//速さ
+	
+	Spawn();	//生成
 
+}
+
+//生成
+void Enemy::Spawn()
+{
 	//当たり判定設定
-	collision.left = (GAME_WIDTH / 2) - (img->GetWidth() / 2);		//左上X
+	collision.left = GetRand(SPAWN_RIGHT - SPAWN_LEFT) + SPAWN_LEFT;//左上X
 	collision.top = GAME_TOP;										//左上Y
 	collision.right = collision.left + img->GetWidth();				//右下X
 	collision.bottom = collision.top + img->GetHeight();			//右下Y
+
+	Hit = false;	//当たっていない
+	IsMove = true;	//動く
 
 }
 
@@ -93,6 +103,7 @@ void Enemy::SetInit()
 void Enemy::Draw()
 {
 	img->Draw(collision.left, collision.top);	//描画
+	DrawBox(collision.left, collision.top, collision.right, collision.bottom, COLOR_RED, FALSE);
 }
 
 //当たり判定

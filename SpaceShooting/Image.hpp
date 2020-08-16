@@ -47,6 +47,10 @@ private:
 
 	int Handle;			//ハンドル
 
+	int X;				//X
+	int Y;				//Y
+	int CenterX;		//中央X
+	int CenterY;		//中央Y
 	int Width;			//幅
 	int Height;			//高さ
 
@@ -64,17 +68,22 @@ public:
 
 	string GetFileName(void);	//名前を取得
 
-	void SetInit(void);				//サイズをセット
+	void SetInit(void);				//初期設定
+	void SetPos(int, int);			//描画位置設定
 
-	int GetWidth();		//幅を取得
-	int GetHeight();	//高さを取得
+	int GetCenterX();				//中央X取得
+	int GetCenterY();				//中央Y取得
+	int GetWidth();					//幅を取得
+	int GetHeight();				//高さを取得
 
 	bool GetIsLoad(void);			//読み込めた？
 	bool GetIsDraw();				//描画してよいか取得
 	void SetIsDraw(bool);			//描画してよいか設定
 
-	void Draw(int, int);			//画像を描画
-	void DrawRota(int, int, double);//画像を描画（回転）
+	void Draw();					//画像を描画
+	void Draw(int, int);			//画像を描画（指定された位置）
+	void DrawRota(double);			//画像を描画（回転）
+	void DrawRota(int, int, double);//画像を描画（指定された位置、回転）
 	void DrawCenter();				//画像を描画（中央）
 	void DrawCenterY(int);			//画像を描画（上下中央）
 	void DrawCenterX(int);			//画像を描画（左右中央）

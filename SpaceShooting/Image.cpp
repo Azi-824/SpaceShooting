@@ -15,6 +15,10 @@ Image::Image(const char *dir,const char *name)
 	//メンバ変数を初期化
 	FilePath = "";	//パス
 	FileName = "";	//名前
+	X = 0;			//X
+	Y = 0;			//Y
+	CenterX = 0;	//中央X
+	CenterY = 0;	//中央Y
 	
 	IsLoad = false;	//読み込めたか？
 
@@ -57,6 +61,10 @@ Image::Image()
 	//メンバ変数を初期化
 	FilePath = "";	//パス
 	FileName = "";	//名前
+	X = 0;			//X
+	Y = 0;			//Y
+	CenterX = 0;	//中央X
+	CenterY = 0;	//中央Y
 	IsLoad = false;	//読み込めたか？
 	Handle = 0;
 	IsDraw = true;	//描画してよい
@@ -120,11 +128,32 @@ std::string Image::GetFileName(void)
 	return FileName;
 }
 
-//サイズを設定する
+//初期設定
 void Image::SetInit(void)
 {
 	GetGraphSize(Handle, &Width, &Height);	//画像サイズ取得
 	return;
+}
+
+//位置設定
+void Image::SetPos(int x, int y)
+{
+	X = x;
+	Y = y;
+	CenterX = X + Width / 2;
+	CenterY = Y + Height / 2;
+}
+
+//中央X取得
+int Image::GetCenterX()
+{
+	return CenterX;
+}
+
+//中央Y取得
+int Image::GetCenterY()
+{
+	return CenterY;
 }
 
 //幅を取得
@@ -156,6 +185,65 @@ void Image::SetIsDraw(bool isdraw)
 {
 	IsDraw = isdraw;
 	FadeEnd = false;	//フェードアウト終了フラグリセット
+}
+
+//画像を描画
+void Image::Draw()
+{
+
+	static int cnt = FADE_MAX_CNT;				//カウント用
+
+	if (IsFade)	//フェードアウトするときは
+	{
+		if (!FadeEnd)	//フェードアウト終了していなければ
+		{
+
+			if (IsDraw)	//描画してよければ
+			{
+
+				//60フレーム分、待つ
+				if (cnt > 0)
+				{
+					--cnt;	//カウントアップ
+				}
+				else
+				{
+					FadeEnd = true;	//フェード終了
+				}
+
+				//フェードアウトの処理
+				double ToukaPercent = cnt / (double)FADE_MAX_CNT;						//透過%を計算
+				SetDrawBlendMode(DX_BLENDMODE_ALPHA, ToukaPercent * TOUKA_MAX_VALUE);	//透過させる
+				DrawGraph(X, Y, Handle, TRUE);											//画像を描画
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);								//透過をやめる
+
+
+			}
+
+
+		}
+		else 		//フェードアウト終了したら
+		{
+			IsDraw = false;			//描画しない
+			cnt = FADE_MAX_CNT;		//カウントリセット
+			IsFade = false;			//フェードアウトしない
+		}
+
+	}
+	else		//フェードアウトしない時は
+	{
+		cnt = FADE_MAX_CNT;		//カウントリセット
+
+		if (IsDraw)	//描画してよければ
+		{
+			DrawGraph(X, Y, Handle, TRUE);	//画像を描画
+		}
+
+	}
+
+
+	return;
+
 }
 
 //画像を描画
@@ -214,6 +302,62 @@ void Image::Draw(int x, int y)
 	
 
 	return;
+
+}
+
+//画像を描画（回転）
+void Image::DrawRota(double rota)
+{
+
+	static int cnt = FADE_MAX_CNT;				//カウント用
+
+	if (IsFade)	//フェードアウトするときは
+	{
+		if (!FadeEnd)	//フェードアウト終了していなければ
+		{
+
+			if (IsDraw)	//描画してよければ
+			{
+
+				//60フレーム分、待つ
+				if (cnt > 0)
+				{
+					--cnt;	//カウントアップ
+				}
+				else
+				{
+					FadeEnd = true;	//フェード終了
+				}
+
+				//フェードアウトの処理
+				double ToukaPercent = cnt / (double)FADE_MAX_CNT;						//透過%を計算
+				SetDrawBlendMode(DX_BLENDMODE_ALPHA, ToukaPercent * TOUKA_MAX_VALUE);	//透過させる
+				DrawRotaGraph(CenterX, CenterY, 1.0, rota * (M_PI / 180), Handle, TRUE);							//回転描画
+				SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);								//透過をやめる
+
+
+			}
+
+
+		}
+		else 		//フェードアウト終了したら
+		{
+			IsDraw = false;			//描画しない
+			cnt = FADE_MAX_CNT;		//カウントリセット
+			IsFade = false;			//フェードアウトしない
+		}
+
+	}
+	else		//フェードアウトしない時は
+	{
+		cnt = FADE_MAX_CNT;		//カウントリセット
+
+		if (IsDraw)	//描画してよければ
+		{
+			DrawRotaGraph(CenterX, CenterY, 1.0, rota, Handle, TRUE);	//回転描画
+		}
+
+	}
 
 }
 
@@ -279,7 +423,6 @@ void Image::DrawRota(int x, int y,double rota)
 	return;
 
 }
-
 
 //画像を描画（中央）
 void Image::DrawCenter()

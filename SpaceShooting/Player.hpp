@@ -34,7 +34,6 @@ public:
 	void UpDate();			//–ˆ‰ñs‚¤ˆ—
 	void Draw();			//•`‰æ
 	void SetInit();			//‰Šúİ’è
-	void Shot();			//’e‚ğ‘Å‚Â
 	RECT GetCol();			//“–‚½‚è”»’èæ“¾
 	RECT GetBulletCol(int);	//’e‚Ì“–‚½‚è”»’èæ“¾
 	int GetBulleMax();		//Œ»İ‚Ì‹Ê‚Ì”‚ğæ“¾

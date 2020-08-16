@@ -15,6 +15,7 @@ Bullet::Bullet()
 	collision = { 0 };		//“–‚½‚è”»’è
 	Speed = 0;				//‘¬‚³
 	IsDraw = false;			//Å‰‚Í•`‰æ‚µ‚È‚¢
+	IsMove = false;			//ˆÚ“®‚µ‚È‚¢
 	++ElementCnt;			//—v‘f”ƒJƒEƒ“ƒg
 }
 
@@ -35,12 +36,7 @@ void Bullet::SetInit(int x, int y)
 	collision.right = x + anim->GetWidth();
 	collision.bottom = y + anim->GetHeight();
 	IsDraw = false;	//Å‰‚Í•`‰æ‚µ‚È‚¢
-}
-
-//•`‰æ‚·‚é‚©Ý’è
-void Bullet::SetIsDraw(bool draw)
-{
-	IsDraw = draw;
+	IsMove = false;	//ˆÚ“®‚µ‚È‚¢
 }
 
 //•`‰æ
@@ -49,10 +45,25 @@ void Bullet::Draw()
 	if (IsDraw)	//•`‰æ‚·‚é‚Æ‚«
 	{
 		anim->Draw(collision.left,collision.top);	//•`‰æ
+	}
+}
+
+//ˆÚ“®
+void Bullet::Move()
+{
+	if (IsMove)	//ˆÚ“®‚³‚¹‚é‚Æ‚«
+	{
 		//’e‚ðˆÚ“®
 		collision.top -= Speed;
 		collision.bottom -= Speed;
 	}
+}
+
+//Œ‚‚Â
+void Bullet::Shot()
+{
+	IsDraw = true;	//•\Ž¦
+	IsMove = true;	//ˆÚ“®‚·‚é
 }
 
 //‰æ–Ê“à‚©

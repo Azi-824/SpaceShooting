@@ -33,26 +33,28 @@ Player::~Player()
 void Player::UpDate()
 {
 
-	//角度計算
-	Move();
+	Move();		//プレイヤーの移動処理
 
 	if (Mouse::OnLeftClick())	//左クリックされたら
 	{
 		bullet.push_back(new Bullet());	//弾を生成
 		bullet.back()->SetInit(SpawnX, SpawnY);	//初期設定
-		Shot();	//弾を撃つ
+		bullet.back()->Shot();	//撃つ
 	}
 
-	//画面外に出た弾を削除
+	//弾の処理
 	for (int i = 0; i < bullet.size(); ++i)
 	{
-		if (!bullet.at(i)->InScreen())
+		bullet.at(i)->Move();	//弾の移動処理
+
+		if (!bullet.at(i)->InScreen())	//画面外に出たら
 		{
 			delete bullet.at(i);	//破棄
 			bullet.erase(bullet.begin() + i);
 		}
 	}
-	Draw();
+
+	Draw();	//プレイヤー描画
 }
 
 
@@ -79,12 +81,6 @@ void Player::Draw()
 {
 	img->Draw(collision.left, collision.top);
 	for (auto b : bullet) { b->Draw(); }		//弾描画
-}
-
-//弾を撃つ
-void Player::Shot()
-{
-	bullet.back()->SetIsDraw(true);
 }
 
 //当たり判定取得

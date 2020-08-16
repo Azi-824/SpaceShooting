@@ -19,6 +19,7 @@ private:
 	RECT collision;			//当たり判定
 	int Speed;				//速さ
 	bool IsDraw;			//描画しているか
+	bool IsMove;			//移動するか
 	static int ElementCnt;	//要素番号カウント用
 
 public:
@@ -27,9 +28,10 @@ public:
 	~Bullet();			//デストラクタ
 
 	void SetInit(int,int);		//初期設定
-	void SetIsDraw(bool);		//描画するか設定
 
 	void Draw();				//描画
+	void Move();				//移動
+	void Shot();				//撃つ
 	bool InScreen();			//画面内か
 	RECT GetCol();				//当たり判定取得
 	static int GetElementMax();	//要素番号取得

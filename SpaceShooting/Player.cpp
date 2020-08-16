@@ -24,10 +24,12 @@ Player::~Player()
 	for (auto b : bullet) { delete b; }
 	vector<Bullet*> v;
 	bullet.swap(v);
+
+	delete img;	//img破棄
 }
 
 //毎回行う処理
-void Player::UpDate(Charactor* chara)
+void Player::UpDate()
 {
 
 	Move();		//プレイヤーの移動処理
@@ -95,6 +97,12 @@ void Player::Move()
 	//弾発射位置
 	SpawnX = (collision.left + collision.right) / 2;
 
+}
+
+//当たり判定取得
+RECT Player::GetCol()
+{
+	return collision;
 }
 
 //弾の当たり判定取得

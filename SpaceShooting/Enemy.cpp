@@ -25,11 +25,12 @@ Enemy::Enemy(Image* img)
 //デストラクタ
 Enemy::~Enemy() 
 {
+	delete img;			//img破棄
 	delete explosion;	//explosion破棄
 }
 
 //毎回行う処理
-void Enemy::UpDate(Charactor* player)
+void Enemy::UpDate(Player* player)
 {
 
 	if (img->GetIsDraw())	//表示中なら

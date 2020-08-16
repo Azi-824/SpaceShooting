@@ -69,7 +69,7 @@ void Play::PlayScene()
 		e->UpDate(player);	//毎回行う処理
 	}	
 
-	player->UpDate(player);	//毎回行う処理
+	player->UpDate();		//毎回行う処理
 
 	DrawString(TEST_TEXT_X, TEST_TEXT_Y, PLAY_TEXT, COLOR_WHITE);	//テスト用のテキストを描画
 

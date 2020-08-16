@@ -9,7 +9,6 @@
 #include "Bullet.hpp"
 
 //############# マクロ定義 ############
-#define ROTA_BASE	(GAME_WIDTH / 2)		//回転角度計算の基準値
 
 //############# クラス定義 ############
 class Player

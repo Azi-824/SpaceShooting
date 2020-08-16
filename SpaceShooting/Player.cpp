@@ -77,9 +77,7 @@ void Player::SetInit()
 //描画
 void Player::Draw()
 {
-	//img->DrawRota(rota);	//描画(キャラ)
 	img->Draw(collision.left, collision.top);
-	DrawBox(collision.left, collision.top, collision.right, collision.bottom,COLOR_RED,FALSE);
 	for (auto b : bullet) { b->Draw(); }		//弾描画
 }
 
@@ -107,7 +105,7 @@ int Player::GetBulleMax()
 	return Bullet::GetElementMax();
 }
 
-//角度計算
+//移動処理
 void Player::Move()
 {
 	int x = 0, y = 0;		//マウス位置取得用

@@ -82,8 +82,6 @@ public:
 
 	void Draw();					//画像を描画
 	void Draw(int, int);			//画像を描画（指定された位置）
-	void DrawRota(double);			//画像を描画（回転）
-	void DrawRota(int, int, double);//画像を描画（指定された位置、回転）
 	void DrawCenter();				//画像を描画（中央）
 	void DrawCenterY(int);			//画像を描画（上下中央）
 	void DrawCenterX(int);			//画像を描画（左右中央）

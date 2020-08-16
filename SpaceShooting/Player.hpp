@@ -20,10 +20,12 @@ private:
 	RECT collision;	//“–‚½‚è”»’è
 	vector<Bullet*> bullet;	//’e
 
+	int SpawnX;		//’e”­ŽË’n“_X
+	int SpawnY;		//’e”­ŽË’n“_Y
 	int Hp;			//HP
 	double rota;	//Šp“x
 
-	void CalcRota();	//Šp“xŒvŽZ
+	void Move();	//ˆÚ“®
 
 public:
 

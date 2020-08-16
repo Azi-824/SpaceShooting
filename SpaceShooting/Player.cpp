@@ -13,9 +13,10 @@ Player::Player(Image* img)
 	collision = { 0 };	//当たり判定
 	Hp = 0;				//HP
 	rota = 0.0;			//角度
+	SpawnX = 0;			//弾発射地点X
+	SpawnY = 0;			//弾発射地点Y
 
 	this->img = img;
-	bullet.push_back(new Bullet());
 }
 
 //デストラクタ
@@ -33,13 +34,13 @@ void Player::UpDate()
 {
 
 	//角度計算
-	CalcRota();
+	Move();
 
 	if (Mouse::OnLeftClick())	//左クリックされたら
 	{
-		Shot();	//弾を撃つ
 		bullet.push_back(new Bullet());	//弾を生成
-		bullet.back()->SetInit(GAME_WIDTH / 2, collision.top);	//初期設定
+		bullet.back()->SetInit(SpawnX, SpawnY);	//初期設定
+		Shot();	//弾を撃つ
 	}
 
 	//画面外に出た弾を削除
@@ -66,18 +67,18 @@ void Player::SetInit()
 	collision.top = GAME_HEIGHT - img->GetHeight();					//左上Y
 	collision.right = collision.left + img->GetWidth();				//右下X
 	collision.bottom = collision.top + img->GetHeight();			//右下Y
-	
 
-
-	for (auto b : bullet) { b->SetInit(GAME_WIDTH / 2, collision.top); }	//弾の初期化
+	//弾発射位置
+	SpawnX = (collision.left + collision.right) / 2;
+	SpawnY = collision.top;
 
 }
 
 //描画
 void Player::Draw()
 {
-	img->DrawRota(rota);	//描画(キャラ)
-	//img->Draw(collision.left, collision.top);
+	//img->DrawRota(rota);	//描画(キャラ)
+	img->Draw(collision.left, collision.top);
 	DrawBox(collision.left, collision.top, collision.right, collision.bottom,COLOR_RED,FALSE);
 	for (auto b : bullet) { b->Draw(); }		//弾描画
 }
@@ -107,33 +108,18 @@ int Player::GetBulleMax()
 }
 
 //角度計算
-void Player::CalcRota()
+void Player::Move()
 {
 	int x = 0, y = 0;		//マウス位置取得用
 	Mouse::GetPos(&x, &y);	//マウス位置取得
 
-	if (x < GAME_LEFT || x > GAME_WIDTH)	//画面外の場合
-		return;			//計算しない
+	if (x < GAME_LEFT || x + img->GetWidth() > GAME_WIDTH)	//画面外の場合
+		return;			//移動しない
 
-	x -= ROTA_BASE;			//基準値からの距離を測定
-
-	if (rota == (double)x / ROTA_BASE)
-		return;
-
-	//角度計算処理
-	rota = (double)x / ROTA_BASE;
-
-	//int center_x = img->GetCenterX();
-	//int center_y = img->GetCenterY();
-
-	//int left = (collision.left - center_x) * cos(rota) - (collision.top - center_y) * sin(rota) + center_x;
-	//int top = (collision.left - center_x) * sin(rota) + (collision.top - center_y) * cos(rota) + center_y;
-	//int right = (collision.right - center_x) * cos(rota) - (collision.bottom - center_y) * sin(rota) + center_x;
-	//int bottom = (collision.right - center_x) * sin(rota) + (collision.bottom - center_y) * cos(rota) + center_y;
-
-	//collision.left = left;
-	//collision.top = top;
-	//collision.right = right;
-	//collision.bottom = bottom;
+	//当たり判定移動
+	collision.left = x;
+	collision.right = collision.left + img->GetWidth();
+	//弾発射位置
+	SpawnX = (collision.left + collision.right) / 2;
 
 }

@@ -8,20 +8,6 @@
 int Bullet::ElementCnt = 0;	//要素数
 
 //コンストラクタ
-/*
-引数：Animation *：弾のアニメーション
-*/
-Bullet::Bullet(Animation* anim)
-{
-	//メンバー初期化
-	this->anim = anim;		//弾のアニメーション
-	collision = { 0 };		//当たり判定
-	Speed = 0;				//速さ
-	IsDraw = false;			//最初は描画しない
-	++ElementCnt;			//要素数カウント
-}
-
-//コンストラクタ
 Bullet::Bullet()
 {
 	//メンバー初期化

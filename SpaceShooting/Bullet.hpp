@@ -23,7 +23,6 @@ private:
 
 public:
 
-	Bullet(Animation*);	//コンストラクタ
 	Bullet();			//コンストラクタ
 	~Bullet();			//デストラクタ
 

@@ -25,12 +25,12 @@ Enemy::Enemy(Image* img)
 //ƒfƒXƒgƒ‰ƒNƒ^
 Enemy::~Enemy() 
 {
-	delete img;			//img”jŠü
+	//delete img;			//img”jŠü
 	delete explosion;	//explosion”jŠü
 }
 
 //–ˆ‰ñs‚¤ˆ—
-void Enemy::UpDate(Player* player)
+void Enemy::UpDate(Charactor* player)
 {
 
 	if (img->GetIsDraw())	//•\Ž¦’†‚È‚ç
@@ -41,13 +41,13 @@ void Enemy::UpDate(Player* player)
 			Hit = true;	//“–‚½‚Á‚½
 		}
 
-		for (int i = 0; i < player->GetBulleMax(); ++i)
-		{
-			if (OnCollision(player->GetBulletCol(i)))	//’e‚Æ“–‚½‚Á‚Ä‚¢‚½‚ç
-			{
-				Hit = true;	//“–‚½‚Á‚½
-			}
-		}
+		//for (int i = 0; i < player->GetBulleMax(); ++i)
+		//{
+		//	if (OnCollision(player->GetBulletCol(i)))	//’e‚Æ“–‚½‚Á‚Ä‚¢‚½‚ç
+		//	{
+		//		Hit = true;	//“–‚½‚Á‚½
+		//	}
+		//}
 
 		Draw();	//•`‰æ
 

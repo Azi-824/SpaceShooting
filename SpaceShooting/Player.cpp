@@ -12,7 +12,6 @@ Player::Player(Image* img)
 	//メンバー初期化
 	collision = { 0 };	//当たり判定
 	Hp = 0;				//HP
-	rota = 0.0;			//角度
 	SpawnX = 0;			//弾発射地点X
 	SpawnY = 0;			//弾発射地点Y
 
@@ -22,15 +21,10 @@ Player::Player(Image* img)
 //デストラクタ
 Player::~Player()
 {
-	for (auto b : bullet) { delete b; }
-	vector<Bullet*> v;
-	bullet.swap(v);
-
-	delete img;	//img破棄
 }
 
 //毎回行う処理
-void Player::UpDate()
+void Player::UpDate(Charactor* chara)
 {
 
 	Move();		//プレイヤーの移動処理
@@ -81,12 +75,6 @@ void Player::Draw()
 {
 	img->Draw(collision.left, collision.top);
 	for (auto b : bullet) { b->Draw(); }		//弾描画
-}
-
-//当たり判定取得
-RECT Player::GetCol()
-{
-	return collision;
 }
 
 //弾の当たり判定取得

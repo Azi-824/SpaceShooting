@@ -130,7 +130,6 @@ void Player::CalcRota()
 	int center_x = img->GetCenterX();
 	int center_y = img->GetCenterY();
 
-
 	int left = (collision.left - center_x) * cos(rota) - (collision.top - center_y) * sin(rota) + center_x;
 	int top = (collision.left - center_x) * sin(rota) + (collision.top - center_y) * cos(rota) + center_y;
 	int right = (collision.right - center_x) * cos(rota) - (collision.bottom - center_y) * sin(rota) + center_x;

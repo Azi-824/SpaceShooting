@@ -14,25 +14,28 @@
 */
 Collision::Collision(int left, int top, int right, int bottom)
 {
+
 	//座標設定
-	LeftTop.X = left;		//左上(X)
-	LeftTop.Y = top;		//左上(Y)
-	RightTop.X = right;		//右上(X)
-	RightTop.Y = top;		//右上(Y)
-	LeftBottom.X = left;	//左下(X)
-	LeftBottom.Y = bottom;	//左下(Y)
-	RightBottom.X = right;	//右下(X)
-	RightBottom.Y = bottom;	//右下(Y)
+	Coordinate LeftTop = { left,top };		//左上
+	Coordinate RightTop = { right,top };	//右上
+	Coordinate RightBottom{ right,bottom };	//右下
+	Coordinate LeftBottom{ left,bottom };	//左下
+
+	Pos.push_back(LeftTop);		//左上
+	Pos.push_back(RightTop);	//右上
+	Pos.push_back(RightBottom);	//右下
+	Pos.push_back(LeftBottom);	//左下
+
+	CenterX = (left + right) / 2;
+	CenterY = (top + bottom) / 2;
 }
 
 //コンストラクタ
 Collision::Collision()
 {
 	//初期化
-	LeftTop = { 0 };
-	RightTop = { 0 };
-	LeftBottom = { 0 };
-	RightBottom = { 0 };
+	CenterX = 0;
+	CenterY = 0;
 }
 
 //デストラクタ
@@ -48,14 +51,19 @@ Collision::~Collision(){}
 void Collision::Set(int left, int top, int right, int bottom)
 {
 	//座標設定
-	LeftTop.X = left;		//左上(X)
-	LeftTop.Y = top;		//左上(Y)
-	RightTop.X = right;		//右上(X)
-	RightTop.Y = top;		//右上(Y)
-	LeftBottom.X = left;	//左下(X)
-	LeftBottom.Y = bottom;	//左下(Y)
-	RightBottom.X = right;	//右下(X)
-	RightBottom.Y = bottom;	//右下(Y)
+	Coordinate LeftTop = { left,top };		//左上
+	Coordinate RightTop = { right,top };	//右上
+	Coordinate RightBottom{ right,bottom };	//右下
+	Coordinate LeftBottom{ left,bottom };	//左下
+
+	Pos.push_back(LeftTop);		//左上
+	Pos.push_back(RightTop);	//右上
+	Pos.push_back(RightBottom);	//右下
+	Pos.push_back(LeftBottom);	//左下
+
+	CenterX = (left + right) / 2;
+	CenterY = (top + bottom) / 2;
+
 }
 
 //描画
@@ -63,9 +71,25 @@ void Collision::Draw()
 {
 
 	//当たり判定の領域を四角形で描画(後で修正するかも)
-	DrawLine(LeftTop.X, LeftTop.Y, RightTop.X, RightTop.Y, COLOR_RED);
-	DrawLine(RightTop.X, RightTop.Y, RightBottom.X, RightBottom.Y, COLOR_RED);
-	DrawLine(RightBottom.X, RightBottom.Y, LeftBottom.X, LeftBottom.Y, COLOR_RED);
-	DrawLine(LeftBottom.X, LeftBottom.Y, LeftTop.X, LeftTop.Y, COLOR_RED);
+	for (int i = 0; i < Pos.size(); ++i)
+	{
+		if (i == Pos.size() - 1)	//最後の場合
+		{
+			DrawLine(Pos.at(i).X, Pos.at(i).Y, Pos.front().X, Pos.front().Y, COLOR_RED);
+		}
+		else //それ以外
+		{
+			DrawLine(Pos.at(i).X, Pos.at(i).Y, Pos.at(i + 1).X, Pos.at(i + 1).Y, COLOR_RED);
+		}
+	}
+
+}
+
+//回転
+void Collision::Rota(int rota)
+{
+
+	double cos_value = cos(rota);	//cos
+	double sin_value = sin(rota);	//sin
 
 }

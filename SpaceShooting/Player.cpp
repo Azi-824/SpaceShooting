@@ -13,7 +13,6 @@ Player::Player(Image* img)
 	collision = { 0 };	//“–‚½‚è”»’è
 	Hp = 0;				//HP
 	rota = 0.0;			//Šp“x
-	col = new Collision();	//“–‚½‚è”»’èì¬
 
 	this->img = img;
 	bullet.push_back(new Bullet());
@@ -68,7 +67,6 @@ void Player::SetInit()
 	collision.right = collision.left + img->GetWidth();				//‰E‰ºX
 	collision.bottom = collision.top + img->GetHeight();			//‰E‰ºY
 	
-	col->Set((GAME_WIDTH / 2) - (img->GetWidth() / 2), GAME_HEIGHT - img->GetHeight(), collision.left + img->GetWidth(), collision.top + img->GetHeight());
 
 
 	for (auto b : bullet) { b->SetInit(GAME_WIDTH / 2, collision.top); }	//’e‚Ì‰Šú‰»
@@ -80,9 +78,7 @@ void Player::Draw()
 {
 	img->DrawRota(rota);	//•`‰æ(ƒLƒƒƒ‰)
 	//img->Draw(collision.left, collision.top);
-	//DrawBox(collision.left, collision.top, collision.right, collision.bottom,COLOR_RED,FALSE);
-	col->Draw();
-	DrawFormatString(0, 150, COLOR_WHITE, "left:%d\ntop:%d\nright:%d\nbottom:%d", collision.left, collision.top, collision.right, collision.bottom);
+	DrawBox(collision.left, collision.top, collision.right, collision.bottom,COLOR_RED,FALSE);
 	for (auto b : bullet) { b->Draw(); }		//’e•`‰æ
 }
 
@@ -127,17 +123,17 @@ void Player::CalcRota()
 	//Šp“xŒvŽZˆ—
 	rota = (double)x / ROTA_BASE;
 
-	int center_x = img->GetCenterX();
-	int center_y = img->GetCenterY();
+	//int center_x = img->GetCenterX();
+	//int center_y = img->GetCenterY();
 
-	int left = (collision.left - center_x) * cos(rota) - (collision.top - center_y) * sin(rota) + center_x;
-	int top = (collision.left - center_x) * sin(rota) + (collision.top - center_y) * cos(rota) + center_y;
-	int right = (collision.right - center_x) * cos(rota) - (collision.bottom - center_y) * sin(rota) + center_x;
-	int bottom = (collision.right - center_x) * sin(rota) + (collision.bottom - center_y) * cos(rota) + center_y;
+	//int left = (collision.left - center_x) * cos(rota) - (collision.top - center_y) * sin(rota) + center_x;
+	//int top = (collision.left - center_x) * sin(rota) + (collision.top - center_y) * cos(rota) + center_y;
+	//int right = (collision.right - center_x) * cos(rota) - (collision.bottom - center_y) * sin(rota) + center_x;
+	//int bottom = (collision.right - center_x) * sin(rota) + (collision.bottom - center_y) * cos(rota) + center_y;
 
-	collision.left = left;
-	collision.top = top;
-	collision.right = right;
-	collision.bottom = bottom;
+	//collision.left = left;
+	//collision.top = top;
+	//collision.right = right;
+	//collision.bottom = bottom;
 
 }

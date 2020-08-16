@@ -154,7 +154,6 @@
     <ClInclude Include="Animation.hpp" />
     <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="Button.hpp" />
-    <ClInclude Include="Collision.hpp" />
     <ClInclude Include="Effect.hpp" />
     <ClInclude Include="End.hpp" />
     <ClInclude Include="Enemy.hpp" />
@@ -174,7 +173,6 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="End.cpp" />
     <ClCompile Include="Enemy.cpp" />

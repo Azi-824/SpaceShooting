@@ -17,10 +17,6 @@ Charactor::Charactor()
 //デストラクタ
 Charactor::~Charactor()
 {
-	for (auto b : bullet) { delete b; }
-	vector<Bullet*> v;
-	bullet.swap(v);
-
 	delete img;	//img破棄
 }
 
@@ -55,14 +51,3 @@ RECT Charactor::GetCol()
 	return collision;
 }
 
-//弾の当たり判定取得
-RECT Charactor::GetBulletCol(int element)
-{
-	return bullet.at(element)->GetCol();
-}
-
-//現在の弾の数を取得
-int Charactor::GetBulleMax()
-{
-	return Bullet::GetElementMax();
-}

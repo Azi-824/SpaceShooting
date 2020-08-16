@@ -40,13 +40,6 @@ void Enemy::UpDate(Charactor* player)
 			Hit = true;	//“–‚½‚Á‚½
 		}
 
-		for (int i = 0; i < player->GetBulleMax(); ++i)
-		{
-			if (OnCollision(player->GetBulletCol(i)))	//’e‚Æ“–‚½‚Á‚Ä‚¢‚½‚ç
-			{
-				Hit = true;	//“–‚½‚Á‚½
-			}
-		}
 
 		Draw();	//•`‰æ
 

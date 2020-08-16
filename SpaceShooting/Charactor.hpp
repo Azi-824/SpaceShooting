@@ -6,7 +6,6 @@
 //##################### ヘッダファイル読み込み #####################
 #include "Global.hpp"
 #include "Image.hpp"
-#include "Bullet.hpp"
 
 //##################### マクロ定義 ##################
 
@@ -19,7 +18,6 @@ protected:
 
 	Image* img;		//画像
 	RECT collision;	//当たり判定
-	vector<Bullet*> bullet;	//弾
 
 	int Hp;			//HP
 
@@ -34,7 +32,5 @@ public:
 	virtual void SetInit();	//初期設定
 
 	RECT GetCol();			//当たり判定取得
-	RECT GetBulletCol(int);	//弾の当たり判定取得
-	int GetBulleMax();		//現在の玉の数を取得
 
 };

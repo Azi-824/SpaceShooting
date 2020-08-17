@@ -37,24 +37,33 @@ void Enemy::UpDate(Player* player)
 
 	if (img->GetIsDraw())	//表示中なら
 	{
-		//当たり判定
-		if (OnCollision(player->GetCol()))	//プレイヤーと当たっていたら
-		{
-			Hit = true;	//当たった
-		}
 
-		//弾との当たり判定
-		for (int i = 0; i < player->GetBulleMax(); ++i)
+		if (InScreen())	//画面内なら
 		{
-			if (OnCollision(player->GetBulletCol(i)))	//弾と当たっていたら
+			//当たり判定
+			if (OnCollision(player->GetCol()))	//プレイヤーと当たっていたら
 			{
-				Hit = true;		//当たった
-				player->HitBullet(i);	//弾が当たった
+				Hit = true;	//当たった
 			}
-		}
 
-		Move();	//移動
-		Draw();	//描画
+			//弾との当たり判定
+			for (int i = 0; i < player->GetBulleMax(); ++i)
+			{
+				if (OnCollision(player->GetBulletCol(i)))	//弾と当たっていたら
+				{
+					Hit = true;		//当たった
+					player->HitBullet(i);	//弾が当たった
+				}
+			}
+
+			Move();	//移動
+			Draw();	//描画
+
+		}
+		else	//画面外に出たら
+		{
+			Spawn();		//新しく生成
+		}
 
 	}
 
@@ -133,4 +142,11 @@ void Enemy::Move()
 		collision.top += Speed;
 		collision.bottom += Speed;
 	}
+}
+
+//画面内か
+bool Enemy::InScreen()
+{
+	//画面内ならtrue、画面外ならfalseを返す
+	return collision.top < GAME_HEIGHT ? true : false;
 }

@@ -35,6 +35,7 @@ private:
 
 	bool OnCollision(RECT);	//“–‚½‚è”»’è‚Ìˆ—
 	void Spawn();			//¶¬
+	bool InScreen();		//‰æ–Ê“à‚©
 
 public:
 

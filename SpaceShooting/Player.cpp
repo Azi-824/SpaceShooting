@@ -88,11 +88,11 @@ void Player::Move()
 	int x = 0, y = 0;		//マウス位置取得用
 	Mouse::GetPos(&x, &y);	//マウス位置取得
 
-	if (x < GAME_LEFT || x + img->GetWidth() > GAME_WIDTH)	//画面外の場合
+	if (x - img->GetWidth() / 2 < GAME_LEFT || x + img->GetWidth() / 2 > GAME_WIDTH)	//画面外の場合
 		return;			//移動しない
 
 	//当たり判定移動
-	collision.left = x;
+	collision.left = x - img->GetWidth() / 2;
 	collision.right = collision.left + img->GetWidth();
 	//弾発射位置
 	SpawnX = (collision.left + collision.right) / 2;

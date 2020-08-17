@@ -47,7 +47,6 @@ void Bullet::Draw()
 	if (IsDraw)	//•`‰æ‚·‚é‚Æ‚«
 	{
 		anim->Draw(collision.left,collision.top);	//•`‰æ
-		DrawBox(collision.left, collision.top, collision.right, collision.bottom, COLOR_RED, FALSE);
 	}
 }
 

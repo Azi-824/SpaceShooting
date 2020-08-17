@@ -10,10 +10,11 @@
 #include "Effect.hpp"
 
 //############ マクロ定義 ################
-#define ENEMY_SPD	3	//敵の移動速度
-#define SPAWN_LEFT	150	//敵の発生左端
-#define SPAWN_RIGHT	700	//敵の発生右端
-#define SPAWN_HEIGHT 100//敵の発生高さ幅
+#define ENEMY_SPD_MAX	3	//敵の移動速度MAX
+#define ENEMY_SPD_MIN	1	//敵の移動速度MIN
+#define SPAWN_LEFT	150		//敵の発生左端
+#define SPAWN_RIGHT	700		//敵の発生右端
+#define SPAWN_HEIGHT 100	//敵の発生高さ幅
 
 
 //############ クラス定義 ################

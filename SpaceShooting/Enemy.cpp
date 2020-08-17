@@ -87,7 +87,6 @@ void Enemy::SetInit()
 {
 	img->SetInit();			//画像
 	explosion->SetInit();	//エフェクト
-	Speed = ENEMY_SPD;		//速さ
 	
 	Spawn();	//生成
 
@@ -96,6 +95,9 @@ void Enemy::SetInit()
 //生成
 void Enemy::Spawn()
 {
+
+	Speed = GetRand(ENEMY_SPD_MAX - ENEMY_SPD_MIN) + ENEMY_SPD_MIN;	//速さ
+
 	//当たり判定設定
 	collision.left = GetRand(SPAWN_RIGHT - SPAWN_LEFT) + SPAWN_LEFT;//左上X
 	collision.top = -GetRand(SPAWN_HEIGHT);							//左上Y
@@ -112,7 +114,6 @@ void Enemy::Spawn()
 void Enemy::Draw()
 {
 	img->Draw(collision.left, collision.top);	//描画
-	DrawBox(collision.left, collision.top, collision.right, collision.bottom, COLOR_RED, FALSE);
 }
 
 //当たり判定

@@ -38,7 +38,13 @@ void End::PlayScene()
 
 	back->Draw(GAME_LEFT, GAME_TOP);//背景描画
 
-	DrawFormatString(0, 50, COLOR_WHITE, RESULT_TEXT, Enemy::GetDestroyNum());
+	//描画位置設定
+	int width = GetDrawFormatStringWidth(RESULT_TEXT, Enemy::GetDestroyNum());	//横幅
+	int height = GetFontSize();	//高さ
+	int x = (GAME_WIDTH / 2) - (width / 2);		//X
+	int y = (GAME_HEIGHT / 2) - (height / 2);	//Y
+
+	DrawFormatString(x, y, COLOR_RED, RESULT_TEXT, Enemy::GetDestroyNum());		//結果表示
 
 	if (Mouse::OnLeftClick())	//左クリックされたら
 	{

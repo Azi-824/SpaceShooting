@@ -10,8 +10,6 @@
 #include "Music.hpp"
 
 //################### マクロ定義 #########################
-#define DEFF_FONT_SIZE		24		//通常のフォントサイズ
-#define RESULT_FONT_SIZE	48		//結果表示の時のフォントサイズ
 
 //座標関係
 #define TEST_TEXT_X	30					//テスト用のテキスト描画X位置

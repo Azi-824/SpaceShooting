@@ -9,6 +9,8 @@
 //コンストラクタ
 Load::Load()
 {
+	ChangeFontType(DX_FONTTYPE_ANTIALIASING);	//フォントタイプ変更
+	SetFontSize(DEFF_FONT_SIZE);	//フォントサイズ変更
 	IsLoad = Animation::CreateList();	//アニメーションリスト作成
 }
 
@@ -28,14 +30,6 @@ void Load::SetInit()
 void Load::PlayScene()
 {
 
-	if (IsGameStart)	//ゲームスタートできるなら
-	{
-		if (Mouse::OnLeftClick())	//左クリックされたら
-		{
-			NowScene = SCENE_TITLE;	//タイトル画面へ
-		}
-	}
-
 	if (GetASyncLoadNum() == 0)	//非同期で読み込んでいる処理が終わったら
 	{
 
@@ -44,13 +38,21 @@ void Load::PlayScene()
 		IsGameStart = true;		//ゲームスタートできる
 	}
 
+	DrawString(DISCRIPTION_X, DISCRIPTION_Y, DISCRIPTION_TEXT, COLOR_WHITE);	//説明のテキストを描画
+
 	if (IsGameStart)	//ゲームスタートできるなら
 	{
-		DrawString(TEST_TEXT_X, TEST_TEXT_Y, PUSH_TEXT, COLOR_WHITE);	//プッシュ、のテキストを描画
+		if (Mouse::OnLeftClick())	//左クリックされたら
+		{
+			SetFontSize(PLAY_FONT_SIZE);	//フォントサイズ変更
+			NowScene = SCENE_TITLE;	//タイトル画面へ
+		}
+
+		DrawString(GAME_LEFT, GAME_TOP, PUSH_TEXT, COLOR_WHITE);	//プッシュ、のテキストを描画
 	}
 	else		//できないなら
 	{
-		DrawString(TEST_TEXT_X, TEST_TEXT_Y, LOAD_TEXT, COLOR_WHITE);	//読み込み中のテキストを描画
+		DrawString(GAME_LEFT, GAME_TOP, LOAD_TEXT, COLOR_WHITE);	//読み込み中のテキストを描画
 	}
 
 

@@ -8,8 +8,15 @@
 #include "Animation.hpp"
 
 //################### マクロ定義 ###################
-#define LOAD_TEXT	"NowLoading…"		//ロード画面のテキスト
-#define PUSH_TEXT	"Click"				//クリックのテキスト
+#define DEFF_FONT_SIZE		24		//通常のフォントサイズ
+#define PLAY_FONT_SIZE		48		//ゲームプレイ中のフォントサイズ
+
+#define LOAD_TEXT			"NowLoading…"		//ロード画面のテキスト
+#define DISCRIPTION_TEXT	"右クリックで弾を発射できるよ！\n敵機が自機に当たるか、画面端まで来てしまうと\nゲームオーバーだ！\n敵機を沢山撃ち落とそう！" //説明テキスト
+#define PUSH_TEXT			"左クリックでSTART!"		//クリックのテキスト
+//座標関係
+#define DISCRIPTION_X	50	//説明用のテキスト描画X位置
+#define DISCRIPTION_Y	50	//説明用のテキスト描画Y位置
 
 //################### クラス定義 ###################
 class Load : public Scene	//Sceneクラスを継承

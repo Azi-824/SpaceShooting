@@ -10,12 +10,8 @@
 #include "Music.hpp"
 
 //################### マクロ定義 #########################
-//テキスト関係
-#define LOAD_TEXT	"NowLoading…"		//ロード画面のテキスト
-#define PUSH_TEXT	"Click"				//クリックのテキスト
-#define TITLE_TEXT	"NowTitle"			//タイトル画面のテキスト
-#define PLAY_TEXT	"NowPlay"			//プレイ画面のテキスト
-#define END_TEXT	"NowEnd"			//エンド画面のテキスト
+#define DEFF_FONT_SIZE		24		//通常のフォントサイズ
+#define RESULT_FONT_SIZE	48		//結果表示の時のフォントサイズ
 
 //座標関係
 #define TEST_TEXT_X	30					//テスト用のテキスト描画X位置

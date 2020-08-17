@@ -8,6 +8,8 @@
 #include "Animation.hpp"
 
 //################### マクロ定義 ###################
+#define LOAD_TEXT	"NowLoading…"		//ロード画面のテキスト
+#define PUSH_TEXT	"Click"				//クリックのテキスト
 
 //################### クラス定義 ###################
 class Load : public Scene	//Sceneクラスを継承

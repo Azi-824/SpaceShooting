@@ -88,8 +88,6 @@ bool GameLoop()
 
 	//▲▲▲▲▲ゲームのシーンここまで▲▲▲▲▲
 
-	fps->Draw(0, 0);		//FPS描画
-
 	ScreenFlip();			//モニタのリフレッシュレートの速さで裏画面を再描画
 
 	fps->Wait();			//FPSの処理[待つ]

@@ -84,8 +84,6 @@ void Play::PlayScene()
 
 	player->UpDate();		//毎回行う処理
 
-	DrawString(TEST_TEXT_X, TEST_TEXT_Y, PLAY_TEXT, COLOR_WHITE);	//テスト用のテキストを描画
-
 	if (Enemy::GetIsEnd())	//終了したら
 	{
 		bgm->Stop();			//BGMを止める

@@ -38,8 +38,9 @@ void End::PlayScene()
 
 	back->Draw(GAME_LEFT, GAME_TOP);//背景描画
 
-	DrawString(TEST_TEXT_X, TEST_TEXT_Y, END_TEXT, COLOR_WHITE);	//テスト用のテキストを描画
-	DrawFormatString(0, 50, COLOR_WHITE, "%d機撃ち落とした！", Enemy::GetDestroyNum());
+	SetFontSize(RESULT_FONT_SIZE);	//フォントサイズ変更
+	DrawFormatString(0, 50, COLOR_WHITE, RESULT_TEXT, Enemy::GetDestroyNum());
+	SetFontSize(DEFF_FONT_SIZE);	//フォントサイズ変更
 
 	if (Mouse::OnLeftClick())	//左クリックされたら
 	{

@@ -8,6 +8,7 @@
 #include "Enemy.hpp"
 
 //############# マクロ定義 ##############
+#define RESULT_TEXT	"%d機撃ち落とした!!!"		//結果表示のテキスト
 
 //############# クラス定義 ##############
 class End : public Scene	//Sceneを継承

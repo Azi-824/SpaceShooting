@@ -8,6 +8,7 @@
 #include "Button.hpp"
 
 //################### マクロ定義 #####################
+#define TITLE_TEXT	"NowTitle"			//タイトル画面のテキスト
 
 //################### クラス定義 #####################
 class Title : public Scene	//Sceneクラスを継承

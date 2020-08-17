@@ -12,7 +12,7 @@
 //############ マクロ定義 ################
 #define ENEMY_SPD	3	//敵の移動速度
 #define SPAWN_LEFT	150	//敵の発生左端
-#define SPAWN_RIGHT	710	//敵の発生右端
+#define SPAWN_RIGHT	700	//敵の発生右端
 
 
 //############ クラス定義 ################

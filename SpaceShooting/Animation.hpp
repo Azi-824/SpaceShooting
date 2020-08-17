@@ -73,6 +73,7 @@ private:
 public:
 
 	static bool CreateList();		//リスト作成
+	static void DeleteHandle();		//リストのハンドルを削除
 
 	Animation(int, double, bool);	//コンストラクタ
 	~Animation();																	//デストラクタ

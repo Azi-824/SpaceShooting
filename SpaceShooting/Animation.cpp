@@ -117,6 +117,16 @@ bool Animation::CreateList()
 
 }
 
+//リストのハンドルを削除
+void Animation::DeleteHandle()
+{
+	//リストに読み込んだアニメーションのハンドルを削除
+	for (auto a : AnimList)
+	{
+		DeleteGraph(a.front());	
+	}
+}
+
 //初期設定
 void Animation::SetInit()
 {

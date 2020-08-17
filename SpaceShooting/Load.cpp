@@ -13,7 +13,10 @@ Load::Load()
 }
 
 //デストラクタ
-Load::~Load(){}
+Load::~Load()
+{
+	Animation::DeleteHandle();	//リストに読み込んだハンドルを削除
+}
 
 //初期設定
 void Load::SetInit()

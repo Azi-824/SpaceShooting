@@ -41,7 +41,6 @@ void Enemy::UpDate(Player* player)
 		if (OnCollision(player->GetCol()))	//プレイヤーと当たっていたら
 		{
 			Hit = true;	//当たった
-			IsMove = false;	//動かない
 		}
 
 		//弾との当たり判定
@@ -50,7 +49,6 @@ void Enemy::UpDate(Player* player)
 			if (OnCollision(player->GetBulletCol(i)))	//弾と当たっていたら
 			{
 				Hit = true;		//当たった
-				IsMove = false;	//動かない
 				player->HitBullet(i);	//弾が当たった
 			}
 		}
@@ -62,11 +60,13 @@ void Enemy::UpDate(Player* player)
 
 	if (Hit)	//当たったら
 	{
+		img->SetIsDraw(false);	//非表示
+		IsMove = false;			//動かない
 		explosion->DrawCenter(collision);	//爆発
+
 		if (explosion->GetIsEffectEnd())	//エフェクト描画終了したら
 		{
 			explosion->Reset();		//エフェクトリセット
-			//img->SetIsDraw(false);	//非表示
 			Spawn();				//生成
 		}
 	}
@@ -94,6 +94,7 @@ void Enemy::Spawn()
 	collision.right = collision.left + img->GetWidth();				//右下X
 	collision.bottom = collision.top + img->GetHeight();			//右下Y
 
+	img->SetIsDraw(true);	//表示
 	Hit = false;	//当たっていない
 	IsMove = true;	//動く
 

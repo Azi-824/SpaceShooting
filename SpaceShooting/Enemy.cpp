@@ -82,7 +82,6 @@ void Enemy::UpDate(Player* player)
 
 }
 
-
 //‰ŠúÝ’è
 void Enemy::SetInit()
 {
@@ -99,7 +98,7 @@ void Enemy::Spawn()
 {
 	//“–‚½‚è”»’èÝ’è
 	collision.left = GetRand(SPAWN_RIGHT - SPAWN_LEFT) + SPAWN_LEFT;//¶ãX
-	collision.top = GAME_TOP;										//¶ãY
+	collision.top = -GetRand(SPAWN_HEIGHT);							//¶ãY
 	collision.right = collision.left + img->GetWidth();				//‰E‰ºX
 	collision.bottom = collision.top + img->GetHeight();			//‰E‰ºY
 

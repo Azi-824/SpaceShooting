@@ -14,7 +14,12 @@
 enum CHARA_KIND
 {
 	CHARA_KIND_PLAYER,	//プレイヤー
-	CHARA_KIND_ENEMY1	//敵1
+	CHARA_KIND_ENEMY1,	//敵1
+	CHARA_KIND_ENEMY2,	//敵2
+	CHARA_KIND_ENEMY3,	//敵3
+	CHARA_KIND_ENEMY4,	//敵4
+	CHARA_KIND_ENEMY5,	//敵5
+	CHARA_KIND_ENEMY6	//敵6
 };
 
 //############### クラス定義 #################

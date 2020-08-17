@@ -15,7 +15,11 @@
 
 #define PLAYER_IMG_NAME		R"(\player.png)"			//プレイヤーの画像ファイルの名前
 #define ENEMY1_IMG_NAME		R"(\enemy1.png)"			//敵キャラ1の画像ファイルの名前
-
+#define ENEMY2_IMG_NAME		R"(\enemy2.png)"			//敵キャラ2の画像ファイルの名前
+#define ENEMY3_IMG_NAME		R"(\enemy3.png)"			//敵キャラ3の画像ファイルの名前
+#define ENEMY4_IMG_NAME		R"(\enemy4.png)"			//敵キャラ4の画像ファイルの名前
+#define ENEMY5_IMG_NAME		R"(\enemy5.png)"			//敵キャラ5の画像ファイルの名前
+#define ENEMY6_IMG_NAME		R"(\enemy6.png)"			//敵キャラ6の画像ファイルの名前
 
 #define IMG_NAME_TITLE		R"(\title.jpg)"				//タイトル画面の背景画像の名前
 #define IMG_NAME_PLAY		R"(\play.jpg)"				//プレイ画面の背景画像の名前

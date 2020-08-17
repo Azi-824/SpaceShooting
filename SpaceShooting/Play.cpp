@@ -17,6 +17,11 @@ Play::Play()
 	//‰æ‘œ
 	chara_img.push_back(new Image(CHAR_IMG_DIR, PLAYER_IMG_NAME));	//ƒvƒŒƒCƒ„[‚Ì‰æ‘œ
 	chara_img.push_back(new Image(CHAR_IMG_DIR, ENEMY1_IMG_NAME));	//“G1‚Ì‰æ‘œ
+	chara_img.push_back(new Image(CHAR_IMG_DIR, ENEMY2_IMG_NAME));	//“G2‚Ì‰æ‘œ
+	chara_img.push_back(new Image(CHAR_IMG_DIR, ENEMY3_IMG_NAME));	//“G3‚Ì‰æ‘œ
+	chara_img.push_back(new Image(CHAR_IMG_DIR, ENEMY4_IMG_NAME));	//“G4‚Ì‰æ‘œ
+	chara_img.push_back(new Image(CHAR_IMG_DIR, ENEMY5_IMG_NAME));	//“G5‚Ì‰æ‘œ
+	chara_img.push_back(new Image(CHAR_IMG_DIR, ENEMY6_IMG_NAME));	//“G6‚Ì‰æ‘œ
 
 	for (auto c : chara_img)
 	{
@@ -24,6 +29,11 @@ Play::Play()
 	}
 	//ƒLƒƒƒ‰
 	enemy.push_back(new Enemy(chara_img.at(CHARA_KIND_ENEMY1)));	//“G1
+	enemy.push_back(new Enemy(chara_img.at(CHARA_KIND_ENEMY2)));	//“G2
+	enemy.push_back(new Enemy(chara_img.at(CHARA_KIND_ENEMY3)));	//“G3
+	enemy.push_back(new Enemy(chara_img.at(CHARA_KIND_ENEMY4)));	//“G4
+	enemy.push_back(new Enemy(chara_img.at(CHARA_KIND_ENEMY5)));	//“G5
+	enemy.push_back(new Enemy(chara_img.at(CHARA_KIND_ENEMY6)));	//“G6
 	for (auto e : enemy)
 	{
 		if (!e->GetIsLoad()) { IsLoad = false; return; }	//“Ç‚İ‚İ¸”s

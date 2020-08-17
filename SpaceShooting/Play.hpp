@@ -31,6 +31,9 @@ private:
 	vector<Enemy*> enemy;		//敵
 	Player* player;				//プレイヤー
 
+	bool start;					//Start()を実行したか
+	void Start();				//シーンが変わったら、一回だけ実行する
+
 public:
 
 	Play();		//コンストラクタ

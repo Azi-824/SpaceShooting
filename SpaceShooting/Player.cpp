@@ -34,7 +34,7 @@ void Player::UpDate()
 
 	Move();		//プレイヤーの移動処理
 
-	if (Mouse::OnLeftClick())	//左クリックされたら
+	if (Mouse::OnRightClick())	//右クリックされたら
 	{
 		bullet.push_back(new Bullet());	//弾を生成
 		bullet.back()->SetInit(SpawnX, SpawnY);	//初期設定
@@ -62,7 +62,11 @@ void Player::SetInit()
 {
 	img->SetInit();		//画像初期設定
 	img->SetPos((GAME_WIDTH / 2) - (img->GetWidth() / 2), GAME_HEIGHT - img->GetHeight());	//描画位置設定
+}
 
+//初期化
+void Player::Init()
+{
 	//当たり判定設定
 	collision.left = (GAME_WIDTH / 2) - (img->GetWidth() / 2);		//左上X
 	collision.top = GAME_HEIGHT - img->GetHeight();					//左上Y
@@ -72,6 +76,16 @@ void Player::SetInit()
 	//弾発射位置
 	SpawnX = (collision.left + collision.right) / 2;
 	SpawnY = collision.top;
+
+	if (!bullet.empty())	//弾が発射されていたら
+	{
+		//弾を削除
+		for (auto b : bullet)
+		{
+			delete b;
+		}
+		bullet.erase(bullet.begin(), bullet.end());	
+	}
 
 }
 

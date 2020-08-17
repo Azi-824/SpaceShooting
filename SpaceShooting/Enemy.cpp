@@ -5,6 +5,9 @@
 
 //########### クラス定義 ###############
 
+int Enemy::DestroyCnt = 0;	//倒された数
+bool Enemy::End = false;	//終了フラグ
+
 //コンストラクタ
 //引数：Image *：キャラクターの画像
 Enemy::Enemy(Image* img)
@@ -35,36 +38,39 @@ Enemy::~Enemy()
 void Enemy::UpDate(Player* player)
 {
 
-	if (img->GetIsDraw())	//表示中なら
+	if (!End)	//終了じゃなければ
 	{
-
-		if (InScreen())	//画面内なら
+		if (img->GetIsDraw())	//表示中なら
 		{
-			//当たり判定
-			if (OnCollision(player->GetCol()))	//プレイヤーと当たっていたら
-			{
-				Hit = true;	//当たった
-			}
 
-			//弾との当たり判定
-			for (int i = 0; i < player->GetBulleMax(); ++i)
+			if (InScreen())	//画面内なら
 			{
-				if (OnCollision(player->GetBulletCol(i)))	//弾と当たっていたら
+				//当たり判定
+				if (OnCollision(player->GetCol()))	//プレイヤーと当たっていたら
 				{
-					Hit = true;		//当たった
-					player->HitBullet(i);	//弾が当たった
+					Hit = true;	//当たった
+					End = true;	//終了
 				}
+
+				//弾との当たり判定
+				for (int i = 0; i < player->GetBulleMax(); ++i)
+				{
+					if (OnCollision(player->GetBulletCol(i)))	//弾と当たっていたら
+					{
+						Hit = true;		//当たった
+						player->HitBullet(i);	//弾が当たった
+					}
+				}
+
+				Move();	//移動
+				Draw();	//描画
+
 			}
-
-			Move();	//移動
-			Draw();	//描画
-
+			else	//画面外に出たら
+			{
+				End = true;	//終了
+			}
 		}
-		else	//画面外に出たら
-		{
-			Spawn();		//新しく生成
-		}
-
 	}
 
 	if (Hit)	//当たったら
@@ -76,6 +82,7 @@ void Enemy::UpDate(Player* player)
 		if (explosion->GetIsEffectEnd())	//エフェクト描画終了したら
 		{
 			explosion->Reset();		//エフェクトリセット
+			++DestroyCnt;			//破壊された数を加算
 			Spawn();				//生成
 		}
 	}
@@ -87,9 +94,15 @@ void Enemy::SetInit()
 {
 	img->SetInit();			//画像
 	explosion->SetInit();	//エフェクト
-	
-	Spawn();	//生成
 
+}
+
+//初期設定
+void Enemy::Init()
+{
+	DestroyCnt = 0;	//倒された数
+	End = false;	//終了フラグ
+	Spawn();		//生成
 }
 
 //生成
@@ -148,5 +161,17 @@ void Enemy::Move()
 bool Enemy::InScreen()
 {
 	//画面内ならtrue、画面外ならfalseを返す
-	return collision.top < GAME_HEIGHT ? true : false;
+	return collision.bottom < GAME_HEIGHT ? true : false;
+}
+
+//終了か
+bool Enemy::GetIsEnd()
+{
+	return End;
+}
+
+//倒された数を取得
+int Enemy::GetDestroyNum()
+{
+	return DestroyCnt;
 }

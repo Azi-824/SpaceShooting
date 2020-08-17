@@ -41,6 +41,7 @@ Play::Play()
 
 	player = new Player(chara_img.at(CHARA_KIND_PLAYER));//プレイヤー
 	IsLoad = true;	//読み込み成功
+	start = false;	
 
 }
 
@@ -70,6 +71,8 @@ void Play::SetInit()
 void Play::PlayScene()
 {
 
+	Start();		//シーンが変わったら一回だけ実行
+
 	bgm->Play();	//BGMを流す
 
 	back->Draw(GAME_LEFT, GAME_TOP);	//背景描画
@@ -83,10 +86,28 @@ void Play::PlayScene()
 
 	DrawString(TEST_TEXT_X, TEST_TEXT_Y, PLAY_TEXT, COLOR_WHITE);	//テスト用のテキストを描画
 
-	if (Mouse::OnLeftClick())	//左クリックされたら
+	if (Enemy::GetIsEnd())	//終了したら
 	{
-		//bgm->Stop();			//BGMを止める
-		//NowScene = SCENE_END;	//エンド画面へ
+		bgm->Stop();			//BGMを止める
+		start = false;			//次に備えて、falseへ
+		NowScene = SCENE_END;	//エンド画面へ
 	}
 
+}
+
+//シーンが変わったら一回だけ実行
+void Play::Start()
+{
+	if (!start)	//処理を実行していなければ
+	{
+		//敵の初期化
+		for (auto e : enemy)
+		{
+			e->Init();	//初期化
+		}
+
+		//プレイヤー初期化
+		player->Init();	//初期化
+		start = true;	//実行済み
+	}
 }

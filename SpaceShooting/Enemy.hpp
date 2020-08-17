@@ -35,6 +35,9 @@ private:
 	bool IsLoad;	//読み込めた
 	bool IsMove;	//移動しているか
 
+	static int DestroyCnt;	//倒された数
+	static bool End;		//終了フラグ
+
 	bool OnCollision(RECT);	//当たり判定の処理
 	void Spawn();			//生成
 	bool InScreen();		//画面内か
@@ -46,8 +49,11 @@ public:
 
 	void UpDate(Player*);	//毎回行う処理
 	void SetInit();			//初期設定
+	void Init();			//初期化
 	void Draw();			//描画
 	bool GetIsLoad();		//読み込めたか取得
 	void Move();			//移動
+	static bool GetIsEnd();	//終了か
+	static int GetDestroyNum();	//倒した数を取得
 
 };
